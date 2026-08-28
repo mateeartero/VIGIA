@@ -13,545 +13,695 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    :root {
+      --azul: #2563eb;
+      --azul-oscuro: #1747b0;
+      --rojo: #e53950;
+      --verde: #16a05d;
+      --fondo: #f5f7fb;
+      --texto: #172033;
+      --gris: #6b7280;
+      --borde: #e5e7eb;
+    }
+
     body {
-      background: #f4f7fb;
-      color: #17202a;
+      background: var(--fondo);
+      color: var(--texto);
+      min-height: 100vh;
     }
 
     .app {
+      width: 100%;
       max-width: 480px;
       min-height: 100vh;
       margin: auto;
-      background: #ffffff;
-      box-shadow: 0 0 25px rgba(0,0,0,0.08);
-      overflow: hidden;
-    }
-
-    /* HEADER */
-
-    .header {
-      background: linear-gradient(135deg, #0b5cff, #174ea6);
-      color: white;
-      padding: 25px 22px;
-      border-radius: 0 0 28px 28px;
-    }
-
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo {
-      width: 45px;
-      height: 45px;
-      border-radius: 14px;
       background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0b5cff;
-      font-size: 23px;
-      font-weight: bold;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    .logo-text h1 {
-      font-size: 20px;
-    }
-
-    .logo-text p {
-      font-size: 12px;
-      opacity: 0.85;
-      margin-top: 3px;
-    }
-
-    .profile-btn {
-      width: 40px;
-      height: 40px;
-      border: none;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.18);
-      color: white;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .welcome {
-      margin-top: 28px;
-    }
-
-    .welcome h2 {
-      font-size: 25px;
-      margin-bottom: 7px;
-    }
-
-    .welcome p {
-      font-size: 14px;
-      opacity: 0.9;
-    }
-
-    /* CONTENT */
-
-    .content {
-      padding: 20px;
-    }
-
-    .status-card {
-      background: #eef5ff;
-      border: 1px solid #d8e7ff;
-      border-radius: 18px;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      margin-bottom: 20px;
-    }
-
-    .status-icon {
-      width: 42px;
-      height: 42px;
-      background: #dceaff;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0b5cff;
-      font-size: 20px;
-    }
-
-    .status-text h3 {
-      font-size: 15px;
-      margin-bottom: 4px;
-    }
-
-    .status-text p {
-      font-size: 12px;
-      color: #657383;
-    }
-
-    /* ALERT */
-
-    .alert-main {
-      background: linear-gradient(135deg, #ff334f, #d71938);
-      color: white;
-      border-radius: 24px;
-      padding: 22px;
-      box-shadow: 0 10px 25px rgba(215,25,56,0.22);
-      margin-bottom: 22px;
-    }
-
-    .alert-main h2 {
-      font-size: 20px;
-      margin-bottom: 6px;
-    }
-
-    .alert-main p {
-      font-size: 13px;
-      opacity: 0.9;
-      margin-bottom: 18px;
-    }
-
-    .main-alert-btn {
-      width: 100%;
-      border: none;
-      background: white;
-      color: #d71938;
-      padding: 15px;
-      border-radius: 15px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .main-alert-btn:active {
-      transform: scale(0.98);
-    }
-
-    /* QUICK ALERTS */
-
-    .section-title {
-      margin-bottom: 13px;
-      font-size: 17px;
-    }
-
-    .alerts-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 23px;
-    }
-
-    .alert-option {
-      border: 1px solid #e2e8f0;
-      background: white;
-      border-radius: 18px;
-      padding: 17px 14px;
-      cursor: pointer;
-      text-align: left;
-      transition: 0.2s;
-    }
-
-    .alert-option:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-
-    .alert-option .icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-      background: #f0f4fa;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-      font-size: 18px;
-    }
-
-    .alert-option strong {
-      font-size: 14px;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .alert-option span {
-      color: #718096;
-      font-size: 11px;
-    }
-
-    /* MAP */
-
-    .map-card {
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 17px;
-      margin-bottom: 20px;
-    }
-
-    .map-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .map-header h3 {
-      font-size: 16px;
-    }
-
-    .location-status {
-      font-size: 11px;
-      color: #16a34a;
-      font-weight: bold;
-    }
-
-    .map-placeholder {
-      min-height: 150px;
-      border-radius: 15px;
-      background:
-        linear-gradient(rgba(220,230,242,0.65) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(220,230,242,0.65) 1px, transparent 1px);
-      background-size: 28px 28px;
-      background-color: #f1f5f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .map-placeholder div {
-      background: white;
-      padding: 13px 16px;
-      border-radius: 14px;
-      box-shadow: 0 5px 16px rgba(0,0,0,0.08);
-    }
-
-    .map-placeholder p {
-      font-size: 12px;
-      color: #667085;
-      margin-top: 5px;
-    }
-
-    .map-btn {
-      width: 100%;
-      border: none;
-      background: #0b5cff;
-      color: white;
-      padding: 13px;
-      margin-top: 12px;
-      border-radius: 13px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    /* TRUSTED CONTACT */
-
-    .contact-card {
-      background: #f8fafc;
-      border-radius: 20px;
-      padding: 18px;
-      margin-bottom: 20px;
-      border: 1px solid #e2e8f0;
-    }
-
-    .contact-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 13px;
-    }
-
-    .contact-info {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .contact-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #dceaff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 20px;
-    }
-
-    .contact-info h3 {
-      font-size: 14px;
-    }
-
-    .contact-info p {
-      font-size: 11px;
-      color: #667085;
-      margin-top: 3px;
-    }
-
-    .edit-btn {
-      border: none;
-      background: none;
-      color: #0b5cff;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .contact-input {
-      width: 100%;
-      border: 1px solid #dbe2ea;
-      border-radius: 11px;
-      padding: 11px;
-      margin-bottom: 8px;
-      outline: none;
-    }
-
-    .save-contact {
-      width: 100%;
-      border: none;
-      background: #17202a;
-      color: white;
-      padding: 11px;
-      border-radius: 11px;
-      cursor: pointer;
-    }
-
-    /* SAFE BUTTON */
-
-    .safe-btn {
-      width: 100%;
-      padding: 16px;
-      border: 2px solid #22a06b;
-      background: white;
-      color: #178553;
-      border-radius: 17px;
-      font-weight: bold;
-      font-size: 15px;
-      cursor: pointer;
-      margin-bottom: 25px;
-    }
-
-    /* NAV */
-
-    .bottom-nav {
-      position: sticky;
-      bottom: 0;
-      background: white;
-      border-top: 1px solid #edf0f3;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      padding: 10px 5px;
-    }
-
-    .nav-item {
-      border: none;
-      background: none;
-      font-size: 11px;
-      color: #7b8794;
-      cursor: pointer;
-      padding: 7px 0;
-    }
-
-    .nav-item.active {
-      color: #0b5cff;
-      font-weight: bold;
-    }
-
-    /* MODAL */
-
-    .modal-bg {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 100;
-    }
-
-    .modal {
-      background: white;
-      width: 100%;
-      max-width: 420px;
-      border-radius: 25px;
-      padding: 24px;
-      animation: showModal 0.2s ease;
-    }
-
-    @keyframes showModal {
-      from {
-        transform: scale(0.94);
-        opacity: 0;
-      }
-
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    .modal h2 {
-      margin-bottom: 8px;
-    }
-
-    .modal p {
-      font-size: 13px;
-      color: #667085;
-      line-height: 1.5;
-      margin-bottom: 18px;
-    }
-
-    .modal-actions {
-      display: grid;
-      gap: 9px;
-    }
-
-    .modal-actions button {
-      border: none;
-      padding: 13px;
-      border-radius: 12px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .confirm-alert {
-      background: #d71938;
-      color: white;
-    }
-
-    .cancel-alert {
-      background: #edf2f7;
-      color: #17202a;
-    }
-
-    /* LOGIN */
+    /* =========================
+       LOGIN
+    ========================= */
 
     .login-screen {
       position: fixed;
       inset: 0;
-      background: linear-gradient(135deg, #0b5cff, #174ea6);
+      z-index: 1000;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
-      z-index: 500;
+      background: linear-gradient(135deg, #2563eb, #1747b0);
     }
 
     .login-box {
-      background: white;
       width: 100%;
-      max-width: 420px;
-      border-radius: 25px;
-      padding: 30px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      max-width: 400px;
+      background: white;
+      border-radius: 28px;
+      padding: 30px 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.2);
     }
 
     .login-logo {
-      width: 65px;
-      height: 65px;
-      border-radius: 20px;
-      background: #0b5cff;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
       margin: 0 auto 18px;
-      font-size: 30px;
-      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #eaf0ff;
+      color: var(--azul);
+      font-size: 34px;
+      font-weight: 700;
     }
 
     .login-box h1 {
       text-align: center;
+      font-size: 29px;
       margin-bottom: 7px;
     }
 
-    .login-box > p {
+    .login-subtitle {
       text-align: center;
-      color: #6b7280;
-      font-size: 13px;
-      margin-bottom: 22px;
+      color: var(--gris);
+      font-size: 14px;
+      margin-bottom: 25px;
     }
 
-    .login-input {
+    .input {
       width: 100%;
-      padding: 13px;
-      border: 1px solid #d8dee7;
-      border-radius: 12px;
-      margin-bottom: 10px;
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 11px;
       outline: none;
+      font-size: 14px;
     }
 
-    .login-btn {
+    .input:focus {
+      border-color: var(--azul);
+    }
+
+    .primary-btn {
       width: 100%;
       border: none;
-      background: #0b5cff;
-      color: white;
+      border-radius: 14px;
       padding: 14px;
-      border-radius: 12px;
-      font-weight: bold;
+      background: var(--azul);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
       cursor: pointer;
-      margin-top: 5px;
     }
+
+    /* =========================
+       APP GENERAL
+    ========================= */
 
     .hidden {
       display: none !important;
     }
 
+    .page {
+      min-height: calc(100vh - 80px);
+      padding-bottom: 100px;
+    }
+
+    .top-header {
+      background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+      color: white;
+      padding: 24px 20px 27px;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand-logo {
+      width: 45px;
+      height: 45px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.18);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      opacity: .85;
+      margin-top: 3px;
+    }
+
+    .profile-btn {
+      width: 41px;
+      height: 41px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,.16);
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .page-title {
+      margin-top: 28px;
+    }
+
+    .page-title h2 {
+      font-size: 25px;
+      margin-bottom: 6px;
+    }
+
+    .page-title p {
+      font-size: 13px;
+      opacity: .9;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    /* =========================
+       TARJETAS
+    ========================= */
+
+    .card {
+      border: 1px solid var(--borde);
+      border-radius: 20px;
+      background: white;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .card-subtitle {
+      color: var(--gris);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       INICIO
+    ========================= */
+
+    .security-status {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      background: #ecfdf5;
+      border: 1px solid #ccefe0;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 17px;
+    }
+
+    .status-icon {
+      width: 44px;
+      height: 44px;
+      background: #d9f8e9;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+    }
+
+    .security-status strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .security-status span {
+      display: block;
+      color: #4b6358;
+      font-size: 11px;
+    }
+
+    .contact-card {
+      border: 1px solid var(--borde);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .contact-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .contact-title {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .edit-text {
+      background: none;
+      border: none;
+      color: var(--azul);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .contact-person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #edf3ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+    }
+
+    .contact-person strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .contact-person span {
+      display: block;
+      color: var(--gris);
+      font-size: 12px;
+    }
+
+    .contact-form {
+      margin-top: 15px;
+    }
+
+    /* =========================
+       UBICACIÓN
+    ========================= */
+
+    .location-status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .gps-badge {
+      background: #ecfdf5;
+      color: #0b8b4f;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .map-box {
+      height: 300px;
+      border-radius: 20px;
+      background:
+        linear-gradient(rgba(190, 202, 220, .45) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(190, 202, 220, .45) 1px, transparent 1px);
+      background-size: 30px 30px;
+      background-color: #eef2f7;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-center {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: rgba(37,99,235,.14);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .map-pin {
+      width: 22px;
+      height: 22px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--azul);
+      transform: rotate(-45deg);
+      position: relative;
+    }
+
+    .map-pin::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+      top: 7px;
+      left: 7px;
+    }
+
+    .coordinates-card {
+      margin-top: 15px;
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .coordinate-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .coordinate-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .coordinate-label {
+      color: var(--gris);
+      font-size: 12px;
+    }
+
+    .coordinate-value {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .location-btn {
+      width: 100%;
+      border: none;
+      background: var(--azul);
+      color: white;
+      padding: 14px;
+      border-radius: 14px;
+      margin-top: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* =========================
+       ALERTAS
+    ========================= */
+
+    .alert-intro {
+      background: #fff4f5;
+      border: 1px solid #ffdadd;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 17px;
+    }
+
+    .alert-intro strong {
+      display: block;
+      color: #b42339;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .alert-intro span {
+      color: #72525a;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .alerts-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .alert-card {
+      border: 1px solid var(--borde);
+      border-radius: 19px;
+      padding: 16px;
+      background: white;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      cursor: pointer;
+      text-align: left;
+      transition: .2s;
+    }
+
+    .alert-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+    }
+
+    .alert-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      background: #fff1f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .alert-info {
+      flex: 1;
+    }
+
+    .alert-info strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: var(--texto);
+    }
+
+    .alert-info span {
+      display: block;
+      font-size: 11px;
+      color: var(--gris);
+    }
+
+    .arrow {
+      font-size: 20px;
+      color: #9ca3af;
+    }
+
+    /* =========================
+       ESTADO
+    ========================= */
+
+    .safe-hero {
+      text-align: center;
+      background: #ecfdf5;
+      border: 1px solid #ccefe0;
+      border-radius: 22px;
+      padding: 28px 20px;
+      margin-bottom: 17px;
+    }
+
+    .safe-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #d8f8e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 31px;
+      margin: 0 auto 14px;
+    }
+
+    .safe-hero h3 {
+      font-size: 20px;
+      margin-bottom: 7px;
+    }
+
+    .safe-hero p {
+      color: #567062;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .safe-options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .safe-option {
+      width: 100%;
+      border: 1px solid var(--borde);
+      background: white;
+      border-radius: 18px;
+      padding: 16px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .safe-option-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: #edf8f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+    }
+
+    .safe-option strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .safe-option span {
+      display: block;
+      color: var(--gris);
+      font-size: 11px;
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      z-index: 2000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal {
+      background: white;
+      width: 100%;
+      max-width: 410px;
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .modal h3 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .modal p {
+      color: var(--gris);
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .modal-buttons {
+      display: grid;
+      gap: 9px;
+    }
+
+    .danger-btn,
+    .cancel-btn {
+      border: none;
+      width: 100%;
+      padding: 13px;
+      border-radius: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .danger-btn {
+      background: var(--rojo);
+      color: white;
+    }
+
+    .cancel-btn {
+      background: #eef2f6;
+      color: var(--texto);
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      height: 78px;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--borde);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      z-index: 900;
+    }
+
+    .nav-btn {
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #8a94a6;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .nav-btn .nav-icon {
+      display: block;
+      font-size: 21px;
+      margin-bottom: 4px;
+    }
+
+    .nav-btn.active {
+      color: var(--azul);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
     @media (min-width: 700px) {
       body {
-        padding: 30px 0;
+        padding: 25px 0;
       }
 
       .app {
-        border-radius: 25px;
+        border-radius: 28px;
+        box-shadow: 0 10px 40px rgba(0,0,0,.08);
+        min-height: calc(100vh - 50px);
+      }
+
+      .bottom-nav {
+        bottom: 25px;
+        border-radius: 0 0 28px 28px;
       }
     }
   </style>
@@ -559,212 +709,144 @@
 
 <body>
 
-  <!-- LOGIN -->
+  <!-- =========================
+       LOGIN
+  ========================= -->
+
   <div class="login-screen" id="loginScreen">
+
     <div class="login-box">
 
-      <div class="login-logo">🛡</div>
+      <div class="login-logo">🛡️</div>
 
       <h1>Ruta Segura</h1>
-      <p>Tu seguridad, siempre cerca.</p>
+
+      <p class="login-subtitle">
+        Tu seguridad, siempre cerca.
+      </p>
 
       <input
-        type="text"
-        class="login-input"
         id="userName"
+        class="input"
+        type="text"
         placeholder="Tu nombre"
       >
 
       <input
-        type="tel"
-        class="login-input"
         id="userPhone"
+        class="input"
+        type="tel"
         placeholder="Tu número de teléfono"
       >
 
-      <button class="login-btn" onclick="startApp()">
-        Entrar
+      <button
+        class="primary-btn"
+        onclick="startApp()"
+      >
+        Ingresar
       </button>
 
     </div>
+
   </div>
 
 
-  <!-- APP -->
+  <!-- =========================
+       APLICACIÓN
+  ========================= -->
+
   <div class="app hidden" id="app">
 
-    <header class="header">
+    <!-- =========================
+         INICIO
+    ========================= -->
 
-      <div class="header-top">
+    <section
+      id="page-home"
+      class="page"
+    >
 
-        <div class="logo-area">
+      <header class="top-header">
 
-          <div class="logo">
-            🛡
+        <div class="header-row">
+
+          <div class="brand">
+
+            <div class="brand-logo">
+              🛡️
+            </div>
+
+            <div>
+              <div class="brand-name">Ruta Segura</div>
+              <div class="brand-subtitle">
+                Tu seguridad, siempre cerca
+              </div>
+            </div>
+
           </div>
 
-          <div class="logo-text">
-            <h1>Ruta Segura</h1>
-            <p>Tu seguridad, siempre cerca</p>
-          </div>
-
-        </div>
-
-        <button class="profile-btn" onclick="logout()">
-          👤
-        </button>
-
-      </div>
-
-      <div class="welcome">
-        <h2 id="welcomeName">Hola 👋</h2>
-        <p>¿Todo bien? Estamos preparados para ayudarte.</p>
-      </div>
-
-    </header>
-
-
-    <main class="content">
-
-      <!-- STATUS -->
-      <div class="status-card">
-
-        <div class="status-icon">
-          📍
-        </div>
-
-        <div class="status-text">
-          <h3 id="gpsStatus">
-            Ubicación no activada
-          </h3>
-
-          <p id="gpsDescription">
-            Activá el GPS para utilizar las alertas.
-          </p>
-        </div>
-
-      </div>
-
-
-      <!-- MAIN ALERT -->
-      <div class="alert-main">
-
-        <h2>🚨 Necesito ayuda</h2>
-
-        <p>
-          Envía una alerta rápida a tu contacto de confianza.
-        </p>
-
-        <button
-          class="main-alert-btn"
-          onclick="openAlert('Necesito ayuda')"
-        >
-          ENVIAR ALERTA
-        </button>
-
-      </div>
-
-
-      <!-- QUICK ALERTS -->
-
-      <h3 class="section-title">
-        Alertas rápidas
-      </h3>
-
-      <div class="alerts-grid">
-
-        <button
-          class="alert-option"
-          onclick="openAlert('Me están robando')"
-        >
-          <div class="icon">🚨</div>
-          <strong>Me están robando</strong>
-          <span>Enviar alerta inmediata</span>
-        </button>
-
-
-        <button
-          class="alert-option"
-          onclick="openAlert('Estoy en peligro')"
-        >
-          <div class="icon">⚠️</div>
-          <strong>Estoy en peligro</strong>
-          <span>Necesito ayuda</span>
-        </button>
-
-
-        <button
-          class="alert-option"
-          onclick="openAlert('Tuve un accidente')"
-        >
-          <div class="icon">🚑</div>
-          <strong>Tuve un accidente</strong>
-          <span>Solicitar asistencia</span>
-        </button>
-
-
-        <button
-          class="alert-option"
-          onclick="openAlert('No me siento seguro/a')"
-        >
-          <div class="icon">🆘</div>
-          <strong>No me siento seguro/a</strong>
-          <span>Contactar a mi persona de confianza</span>
-        </button>
-
-      </div>
-
-
-      <!-- MAP -->
-
-      <div class="map-card">
-
-        <div class="map-header">
-
-          <h3>📍 Mi ubicación</h3>
-
-          <span
-            class="location-status"
-            id="locationStatus"
+          <button
+            class="profile-btn"
+            onclick="logout()"
           >
-            GPS pendiente
-          </span>
+            👤
+          </button>
 
         </div>
 
-        <div class="map-placeholder">
+        <div class="page-title">
+
+          <h2 id="welcomeName">
+            Hola 👋
+          </h2>
+
+          <p>
+            Todo listo para ayudarte cuando lo necesites.
+          </p>
+
+        </div>
+
+      </header>
+
+
+      <div class="content">
+
+        <div class="security-status">
+
+          <div class="status-icon">
+            ✅
+          </div>
 
           <div>
+            <strong>Estás seguro/a</strong>
 
-            <strong id="coordinates">
-              Esperando ubicación...
-            </strong>
-
-            <p>
-              La ubicación se actualizará desde tu dispositivo.
-            </p>
-
+            <span>
+              No hay ninguna alerta activa.
+            </span>
           </div>
 
         </div>
 
-        <button
-          class="map-btn"
-          onclick="getLocation()"
-        >
-          Actualizar ubicación
-        </button>
 
-      </div>
+        <div class="contact-card">
+
+          <div class="contact-header">
+
+            <div class="contact-title">
+              Contacto de confianza
+            </div>
+
+            <button
+              class="edit-text"
+              onclick="toggleContactForm()"
+            >
+              Editar
+            </button>
+
+          </div>
 
 
-      <!-- CONTACT -->
-
-      <div class="contact-card">
-
-        <div class="contact-top">
-
-          <div class="contact-info">
+          <div class="contact-person">
 
             <div class="contact-avatar">
               👤
@@ -772,99 +854,574 @@
 
             <div>
 
-              <h3 id="contactNameDisplay">
-                Contacto de confianza
-              </h3>
-
-              <p id="contactPhoneDisplay">
+              <strong id="contactNameDisplay">
                 Sin configurar
-              </p>
+              </strong>
+
+              <span id="contactPhoneDisplay">
+                Agregá una persona de confianza
+              </span>
 
             </div>
 
           </div>
 
-          <button
-            class="edit-btn"
-            onclick="toggleContactForm()"
+
+          <div
+            class="contact-form hidden"
+            id="contactForm"
           >
-            Editar
-          </button>
+
+            <input
+              id="contactName"
+              class="input"
+              type="text"
+              placeholder="Nombre del contacto"
+            >
+
+            <input
+              id="contactPhone"
+              class="input"
+              type="tel"
+              placeholder="Número de WhatsApp"
+            >
+
+            <button
+              class="primary-btn"
+              onclick="saveContact()"
+            >
+              Guardar contacto
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         UBICACIÓN
+    ========================= -->
+
+    <section
+      id="page-location"
+      class="page hidden"
+    >
+
+      <header class="top-header">
+
+        <div class="header-row">
+
+          <div class="brand">
+
+            <div class="brand-logo">
+              🛡️
+            </div>
+
+            <div>
+              <div class="brand-name">Ruta Segura</div>
+              <div class="brand-subtitle">
+                Ubicación
+              </div>
+            </div>
+
+          </div>
 
         </div>
 
 
-        <div id="contactForm" class="hidden">
+        <div class="page-title">
 
-          <input
-            class="contact-input"
-            type="text"
-            id="contactName"
-            placeholder="Nombre del contacto"
-          >
+          <h2>Mi ubicación</h2>
 
-          <input
-            class="contact-input"
-            type="tel"
-            id="contactPhone"
-            placeholder="Número de WhatsApp"
+          <p>
+            Visualizá tu ubicación actual.
+          </p>
+
+        </div>
+
+      </header>
+
+
+      <div class="content">
+
+        <div class="location-status">
+
+          <div>
+            <div class="card-title">
+              Ubicación actual
+            </div>
+
+            <div class="card-subtitle">
+              El GPS obtiene tu posición desde el dispositivo.
+            </div>
+          </div>
+
+          <div
+            id="gpsBadge"
+            class="gps-badge"
           >
+            GPS pendiente
+          </div>
+
+        </div>
+
+
+        <div class="map-box">
+
+          <div class="map-center">
+
+            <div class="map-pin"></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="coordinates-card">
+
+          <div class="coordinate-row">
+
+            <span class="coordinate-label">
+              Latitud
+            </span>
+
+            <span
+              id="latitude"
+              class="coordinate-value"
+            >
+              — 
+            </span>
+
+          </div>
+
+
+          <div class="coordinate-row">
+
+            <span class="coordinate-label">
+              Longitud
+            </span>
+
+            <span
+              id="longitude"
+              class="coordinate-value"
+            >
+              —
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="location-btn"
+          onclick="getLocation()"
+        >
+          📍 Actualizar ubicación
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ALERTAS
+    ========================= -->
+
+    <section
+      id="page-alerts"
+      class="page hidden"
+    >
+
+      <header class="top-header">
+
+        <div class="header-row">
+
+          <div class="brand">
+
+            <div class="brand-logo">
+              🛡️
+            </div>
+
+            <div>
+              <div class="brand-name">Ruta Segura</div>
+              <div class="brand-subtitle">
+                Alertas
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="page-title">
+
+          <h2>Enviar una alerta</h2>
+
+          <p>
+            Elegí rápidamente qué está pasando.
+          </p>
+
+        </div>
+
+      </header>
+
+
+      <div class="content">
+
+        <div class="alert-intro">
+
+          <strong>🚨 Atención</strong>
+
+          <span>
+            Seleccioná una opción. Ruta Segura preparará
+            un mensaje con tu alerta y tu ubicación.
+          </span>
+
+        </div>
+
+
+        <div class="alerts-list">
 
           <button
-            class="save-contact"
-            onclick="saveContact()"
+            class="alert-card"
+            onclick="openAlert('Me están robando')"
           >
-            Guardar contacto
+
+            <div class="alert-icon">
+              🚨
+            </div>
+
+            <div class="alert-info">
+
+              <strong>
+                Me están robando
+              </strong>
+
+              <span>
+                Avisar inmediatamente a mi contacto.
+              </span>
+
+            </div>
+
+            <div class="arrow">
+              ›
+            </div>
+
+          </button>
+
+
+          <button
+            class="alert-card"
+            onclick="openAlert('Estoy en peligro')"
+          >
+
+            <div class="alert-icon">
+              ⚠️
+            </div>
+
+            <div class="alert-info">
+
+              <strong>
+                Estoy en peligro
+              </strong>
+
+              <span>
+                Necesito ayuda.
+              </span>
+
+            </div>
+
+            <div class="arrow">
+              ›
+            </div>
+
+          </button>
+
+
+          <button
+            class="alert-card"
+            onclick="openAlert('Necesito ayuda')"
+          >
+
+            <div class="alert-icon">
+              🆘
+            </div>
+
+            <div class="alert-info">
+
+              <strong>
+                Necesito ayuda
+              </strong>
+
+              <span>
+                Enviar una alerta a mi contacto.
+              </span>
+
+            </div>
+
+            <div class="arrow">
+              ›
+            </div>
+
+          </button>
+
+
+          <button
+            class="alert-card"
+            onclick="openAlert('Tuve un accidente')"
+          >
+
+            <div class="alert-icon">
+              🚑
+            </div>
+
+            <div class="alert-info">
+
+              <strong>
+                Tuve un accidente
+              </strong>
+
+              <span>
+                Avisar sobre una situación de emergencia.
+              </span>
+
+            </div>
+
+            <div class="arrow">
+              ›
+            </div>
+
+          </button>
+
+
+          <button
+            class="alert-card"
+            onclick="openAlert('No me siento seguro/a')"
+          >
+
+            <div class="alert-icon">
+              🔴
+            </div>
+
+            <div class="alert-info">
+
+              <strong>
+                No me siento seguro/a
+              </strong>
+
+              <span>
+                Avisar que necesito acompañamiento.
+              </span>
+
+            </div>
+
+            <div class="arrow">
+              ›
+            </div>
+
           </button>
 
         </div>
 
       </div>
 
-
-      <!-- SAFE -->
-
-      <button
-        class="safe-btn"
-        onclick="safeMessage()"
-      >
-        ✅ ESTOY SEGURO/A
-      </button>
-
-    </main>
+    </section>
 
 
-    <!-- BOTTOM NAV -->
+    <!-- =========================
+         ESTADO
+    ========================= -->
+
+    <section
+      id="page-safe"
+      class="page hidden"
+    >
+
+      <header class="top-header">
+
+        <div class="header-row">
+
+          <div class="brand">
+
+            <div class="brand-logo">
+              🛡️
+            </div>
+
+            <div>
+              <div class="brand-name">Ruta Segura</div>
+              <div class="brand-subtitle">
+                Estado
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="page-title">
+
+          <h2>Estoy bien</h2>
+
+          <p>
+            Avisale a tu contacto que todo está bien.
+          </p>
+
+        </div>
+
+      </header>
+
+
+      <div class="content">
+
+        <div class="safe-hero">
+
+          <div class="safe-icon">
+            ✅
+          </div>
+
+          <h3>
+            ¿Todo está bien?
+          </h3>
+
+          <p>
+            Elegí una opción para informar tu estado
+            a tu contacto de confianza.
+          </p>
+
+        </div>
+
+
+        <div class="safe-options">
+
+          <button
+            class="safe-option"
+            onclick="sendSafeMessage('Estoy bien')"
+          >
+
+            <div class="safe-option-icon">
+              ✅
+            </div>
+
+            <div>
+
+              <strong>
+                Estoy bien
+              </strong>
+
+              <span>
+                Avisar que estás seguro/a.
+              </span>
+
+            </div>
+
+          </button>
+
+
+          <button
+            class="safe-option"
+            onclick="sendSafeMessage('Llegué')"
+          >
+
+            <div class="safe-option-icon">
+              🏠
+            </div>
+
+            <div>
+
+              <strong>
+                Llegué
+              </strong>
+
+              <span>
+                Avisar que llegaste a destino.
+              </span>
+
+            </div>
+
+          </button>
+
+
+          <button
+            class="safe-option"
+            onclick="sendSafeMessage('Está todo bien')"
+          >
+
+            <div class="safe-option-icon">
+              👍
+            </div>
+
+            <div>
+
+              <strong>
+                Está todo bien
+              </strong>
+
+              <span>
+                Enviar un mensaje de tranquilidad.
+              </span>
+
+            </div>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         NAVEGACIÓN
+    ========================= -->
 
     <nav class="bottom-nav">
 
-      <button class="nav-item active">
-        🏠<br>
+      <button
+        id="nav-home"
+        class="nav-btn active"
+        onclick="showPage('home')"
+      >
+        <span class="nav-icon">🏠</span>
         Inicio
       </button>
 
+
       <button
-        class="nav-item"
-        onclick="getLocation()"
+        id="nav-location"
+        class="nav-btn"
+        onclick="showPage('location')"
       >
-        📍<br>
+        <span class="nav-icon">📍</span>
         Ubicación
       </button>
 
-      <button
-        class="nav-item"
-        onclick="toggleContactForm()"
-      >
-        👤<br>
-        Contacto
-      </button>
 
       <button
-        class="nav-item"
-        onclick="alert('Próximamente: configuración de Ruta Segura')"
+        id="nav-alerts"
+        class="nav-btn"
+        onclick="showPage('alerts')"
       >
-        ⚙️<br>
-        Ajustes
+        <span class="nav-icon">🚨</span>
+        Alertas
+      </button>
+
+
+      <button
+        id="nav-safe"
+        class="nav-btn"
+        onclick="showPage('safe')"
+      >
+        <span class="nav-icon">✅</span>
+        Estoy bien
       </button>
 
     </nav>
@@ -872,34 +1429,37 @@
   </div>
 
 
-  <!-- ALERT MODAL -->
+  <!-- =========================
+       MODAL ALERTA
+  ========================= -->
 
   <div
-    class="modal-bg"
     id="alertModal"
+    class="modal-bg"
   >
 
     <div class="modal">
 
-      <h2 id="modalTitle">
-        Confirmar alerta
-      </h2>
+      <h3 id="modalTitle">
+        🚨 Confirmar alerta
+      </h3>
 
       <p id="modalText">
-        Se enviará una alerta a tu contacto de confianza.
+        Se preparará un mensaje para tu contacto
+        de confianza con tu ubicación.
       </p>
 
-      <div class="modal-actions">
+      <div class="modal-buttons">
 
         <button
-          class="confirm-alert"
-          onclick="sendWhatsApp()"
+          class="danger-btn"
+          onclick="sendWhatsAppAlert()"
         >
           🚨 Confirmar y abrir WhatsApp
         </button>
 
         <button
-          class="cancel-alert"
+          class="cancel-btn"
           onclick="closeModal()"
         >
           Cancelar
@@ -918,117 +1478,218 @@
     let latitude = null;
     let longitude = null;
 
-    /* ==============================
-       INICIO
-    ============================== */
+
+    /* =========================
+       INICIO DE LA APP
+    ========================= */
 
     function startApp() {
 
-      const name = document.getElementById("userName").value.trim();
-      const phone = document.getElementById("userPhone").value.trim();
+      const name =
+        document.getElementById("userName").value.trim();
+
+      const phone =
+        document.getElementById("userPhone").value.trim();
+
 
       if (!name) {
         alert("Ingresá tu nombre.");
         return;
       }
 
-      localStorage.setItem("rutaSeguraUser", name);
+
+      localStorage.setItem(
+        "rutaSeguraUser",
+        name
+      );
+
 
       if (phone) {
-        localStorage.setItem("rutaSeguraPhone", phone);
+
+        localStorage.setItem(
+          "rutaSeguraUserPhone",
+          phone
+        );
+
       }
 
-      document.getElementById("loginScreen").classList.add("hidden");
-      document.getElementById("app").classList.remove("hidden");
 
-      document.getElementById("welcomeName").textContent =
+      document
+        .getElementById("loginScreen")
+        .classList.add("hidden");
+
+
+      document
+        .getElementById("app")
+        .classList.remove("hidden");
+
+
+      document
+        .getElementById("welcomeName")
+        .textContent =
         "Hola " + name + " 👋";
 
+
       loadContact();
+
       getLocation();
+
     }
 
 
-    /* ==============================
-       CARGAR USUARIO
-    ============================== */
+    /* =========================
+       CARGAR SESIÓN
+    ========================= */
 
-    window.onload = function() {
+    window.addEventListener("load", function() {
 
-      const savedName = localStorage.getItem("rutaSeguraUser");
+      const savedName =
+        localStorage.getItem("rutaSeguraUser");
+
 
       if (savedName) {
 
-        document.getElementById("loginScreen").classList.add("hidden");
-        document.getElementById("app").classList.remove("hidden");
+        document
+          .getElementById("loginScreen")
+          .classList.add("hidden");
 
-        document.getElementById("welcomeName").textContent =
+
+        document
+          .getElementById("app")
+          .classList.remove("hidden");
+
+
+        document
+          .getElementById("welcomeName")
+          .textContent =
           "Hola " + savedName + " 👋";
 
+
         loadContact();
+
         getLocation();
+
       }
 
-    };
+    });
 
 
-    /* ==============================
+    /* =========================
+       CAMBIAR DE PANTALLA
+    ========================= */
+
+    function showPage(page) {
+
+      const pages = [
+        "home",
+        "location",
+        "alerts",
+        "safe"
+      ];
+
+
+      pages.forEach(function(item) {
+
+        document
+          .getElementById("page-" + item)
+          .classList.add("hidden");
+
+
+        document
+          .getElementById("nav-" + item)
+          .classList.remove("active");
+
+      });
+
+
+      document
+        .getElementById("page-" + page)
+        .classList.remove("hidden");
+
+
+      document
+        .getElementById("nav-" + page)
+        .classList.add("active");
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* =========================
        GPS
-    ============================== */
+    ========================= */
 
     function getLocation() {
 
       if (!navigator.geolocation) {
 
-        document.getElementById("gpsStatus").textContent =
+        document
+          .getElementById("gpsBadge")
+          .textContent =
           "GPS no disponible";
 
-        document.getElementById("gpsDescription").textContent =
-          "Este navegador no permite obtener tu ubicación.";
-
         return;
+
       }
 
-      document.getElementById("gpsStatus").textContent =
-        "Obteniendo ubicación...";
+
+      document
+        .getElementById("gpsBadge")
+        .textContent =
+        "Obteniendo...";
+
 
       navigator.geolocation.getCurrentPosition(
 
         function(position) {
 
-          latitude = position.coords.latitude;
-          longitude = position.coords.longitude;
+          latitude =
+            position.coords.latitude;
 
-          document.getElementById("gpsStatus").textContent =
-            "Ubicación activa";
+          longitude =
+            position.coords.longitude;
 
-          document.getElementById("gpsDescription").textContent =
-            "Tu ubicación fue obtenida correctamente.";
 
-          document.getElementById("locationStatus").textContent =
-            "GPS activo";
+          document
+            .getElementById("latitude")
+            .textContent =
+            latitude.toFixed(6);
 
-          document.getElementById("coordinates").textContent =
-            latitude.toFixed(6) +
-            ", " +
+
+          document
+            .getElementById("longitude")
+            .textContent =
             longitude.toFixed(6);
 
+
+          document
+            .getElementById("gpsBadge")
+            .textContent =
+            "GPS activo";
+
         },
 
-        function(error) {
 
-          document.getElementById("gpsStatus").textContent =
-            "No se pudo obtener la ubicación";
+        function() {
 
-          document.getElementById("gpsDescription").textContent =
-            "Permití el acceso a la ubicación desde el navegador.";
-
-          document.getElementById("locationStatus").textContent =
+          document
+            .getElementById("gpsBadge")
+            .textContent =
             "GPS pendiente";
 
-          console.log(error);
+
+          alert(
+            "No se pudo obtener tu ubicación. " +
+            "Permití el acceso al GPS desde Chrome."
+          );
 
         },
+
 
         {
           enableHighAccuracy: true,
@@ -1041,68 +1702,190 @@
     }
 
 
-    /* ==============================
-       ALERTA
-    ============================== */
+    /* =========================
+       CONTACTO
+    ========================= */
+
+    function toggleContactForm() {
+
+      document
+        .getElementById("contactForm")
+        .classList.toggle("hidden");
+
+    }
+
+
+    function saveContact() {
+
+      const name =
+        document
+          .getElementById("contactName")
+          .value
+          .trim();
+
+
+      const phone =
+        document
+          .getElementById("contactPhone")
+          .value
+          .trim();
+
+
+      if (!name || !phone) {
+
+        alert(
+          "Completá el nombre y el número de WhatsApp."
+        );
+
+        return;
+
+      }
+
+
+      localStorage.setItem(
+        "rutaSeguraContactName",
+        name
+      );
+
+
+      localStorage.setItem(
+        "rutaSeguraContactPhone",
+        phone
+      );
+
+
+      loadContact();
+
+
+      document
+        .getElementById("contactForm")
+        .classList.add("hidden");
+
+
+      alert(
+        "Contacto de confianza guardado."
+      );
+
+    }
+
+
+    function loadContact() {
+
+      const name =
+        localStorage.getItem(
+          "rutaSeguraContactName"
+        );
+
+
+      const phone =
+        localStorage.getItem(
+          "rutaSeguraContactPhone"
+        );
+
+
+      if (name) {
+
+        document
+          .getElementById("contactNameDisplay")
+          .textContent = name;
+
+      }
+
+
+      if (phone) {
+
+        document
+          .getElementById("contactPhoneDisplay")
+          .textContent = phone;
+
+      }
+
+    }
+
+
+    /* =========================
+       ALERTAS
+    ========================= */
 
     function openAlert(type) {
 
       currentAlert = type;
 
+
       getLocation();
 
-      document.getElementById("modalTitle").textContent =
+
+      document
+        .getElementById("modalTitle")
+        .textContent =
         "🚨 " + type;
 
-      document.getElementById("modalText").textContent =
-        "Se preparará un mensaje para tu contacto de confianza con el tipo de alerta y tu ubicación.";
 
-      document.getElementById("alertModal").style.display =
+      document
+        .getElementById("modalText")
+        .textContent =
+        "Se preparará un mensaje para tu contacto de confianza con esta alerta y tu ubicación actual.";
+
+
+      document
+        .getElementById("alertModal")
+        .style.display =
         "flex";
+
     }
 
 
     function closeModal() {
 
-      document.getElementById("alertModal").style.display =
+      document
+        .getElementById("alertModal")
+        .style.display =
         "none";
 
     }
 
 
-    /* ==============================
-       WHATSAPP
-    ============================== */
+    /* =========================
+       WHATSAPP ALERTA
+    ========================= */
 
-    function sendWhatsApp() {
+    function sendWhatsAppAlert() {
 
       const contactPhone =
-        localStorage.getItem("rutaSeguraContactPhone");
+        localStorage.getItem(
+          "rutaSeguraContactPhone"
+        );
+
 
       if (!contactPhone) {
 
         closeModal();
 
+        showPage("home");
+
+        toggleContactForm();
+
         alert(
           "Primero configurá un contacto de confianza."
         );
 
-        toggleContactForm();
-
         return;
+
       }
 
 
       let message =
-        "🚨 ALERTA - RUTA SEGURA%0A%0A";
+        "🚨 ALERTA - RUTA SEGURA\n\n";
+
 
       message +=
         "Tipo de alerta: " +
         currentAlert +
-        "%0A";
+        "\n\n";
+
 
       message +=
-        "Necesito ayuda.%0A%0A";
+        "Necesito ayuda.\n\n";
 
 
       if (
@@ -1116,8 +1899,9 @@
           "," +
           longitude;
 
+
         message +=
-          "📍 Mi ubicación:%0A" +
+          "📍 Mi ubicación:\n" +
           mapUrl;
 
       } else {
@@ -1128,18 +1912,15 @@
       }
 
 
-      let phone = contactPhone.replace(/\D/g, "");
+      let phone =
+        contactPhone.replace(/\D/g, "");
 
-      /*
-        Argentina:
-        Si guardás un número como 11XXXXXXXX,
-        se intenta utilizar directamente.
-      */
 
-      if (
-        phone.startsWith("0")
-      ) {
-        phone = phone.substring(1);
+      if (phone.startsWith("0")) {
+
+        phone =
+          phone.substring(1);
+
       }
 
 
@@ -1147,10 +1928,11 @@
         "https://wa.me/" +
         phone +
         "?text=" +
-        message;
+        encodeURIComponent(message);
 
 
       closeModal();
+
 
       window.open(
         whatsappUrl,
@@ -1160,119 +1942,116 @@
     }
 
 
-    /* ==============================
-       CONTACTO
-    ============================== */
+    /* =========================
+       ESTOY BIEN
+    ========================= */
 
-    function toggleContactForm() {
+    function sendSafeMessage(type) {
 
-      const form =
-        document.getElementById("contactForm");
-
-      form.classList.toggle("hidden");
-
-    }
-
-
-    function saveContact() {
-
-      const name =
-        document.getElementById("contactName").value.trim();
-
-      const phone =
-        document.getElementById("contactPhone").value.trim();
-
-
-      if (!name || !phone) {
-
-        alert(
-          "Completá el nombre y el número."
-        );
-
-        return;
-      }
-
-
-      localStorage.setItem(
-        "rutaSeguraContactName",
-        name
-      );
-
-      localStorage.setItem(
-        "rutaSeguraContactPhone",
-        phone
-      );
-
-
-      loadContact();
-
-      document
-        .getElementById("contactForm")
-        .classList.add("hidden");
-
-
-      alert(
-        "Contacto de confianza guardado correctamente."
-      );
-
-    }
-
-
-    function loadContact() {
-
-      const name =
-        localStorage.getItem(
-          "rutaSeguraContactName"
-        );
-
-      const phone =
+      const contactPhone =
         localStorage.getItem(
           "rutaSeguraContactPhone"
         );
 
 
-      if (name) {
+      if (!contactPhone) {
 
-        document.getElementById(
-          "contactNameDisplay"
-        ).textContent = name;
+        showPage("home");
+
+        toggleContactForm();
+
+        alert(
+          "Primero configurá un contacto de confianza."
+        );
+
+        return;
+
+      }
+
+
+      let message = "";
+
+
+      if (type === "Estoy bien") {
+
+        message =
+          "✅ Estoy bien. Todo está en orden.";
 
       }
 
 
-      if (phone) {
+      if (type === "Llegué") {
 
-        document.getElementById(
-          "contactPhoneDisplay"
-        ).textContent = phone;
+        message =
+          "🏠 Llegué bien a destino.";
 
       }
 
-    }
+
+      if (type === "Está todo bien") {
+
+        message =
+          "👍 Está todo bien. No te preocupes.";
+
+      }
 
 
-    /* ==============================
-       ESTOY SEGURO
-    ============================== */
+      if (
+        latitude !== null &&
+        longitude !== null
+      ) {
 
-    function safeMessage() {
+        const mapUrl =
+          "https://www.google.com/maps?q=" +
+          latitude +
+          "," +
+          longitude;
 
-      alert(
-        "✅ Estado actualizado: estás seguro/a."
+
+        message +=
+          "\n\n📍 Mi ubicación:\n" +
+          mapUrl;
+
+      }
+
+
+      let phone =
+        contactPhone.replace(/\D/g, "");
+
+
+      if (phone.startsWith("0")) {
+
+        phone =
+          phone.substring(1);
+
+      }
+
+
+      const whatsappUrl =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+      window.open(
+        whatsappUrl,
+        "_blank"
       );
 
     }
 
 
-    /* ==============================
-       SALIR
-    ============================== */
+    /* =========================
+       CERRAR SESIÓN
+    ========================= */
 
     function logout() {
 
       document
         .getElementById("app")
         .classList.add("hidden");
+
 
       document
         .getElementById("loginScreen")
