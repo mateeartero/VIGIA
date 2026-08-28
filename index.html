@@ -1,535 +1,1286 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ruta Segura</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta Segura</title>
 
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background: #f3f6fa;
-    color: #172033;
-}
-
-header {
-    background: #0b1f3a;
-    color: white;
-    padding: 18px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.logo span {
-    color: #35d07f;
-}
-
-header button {
-    background: transparent;
-    border: 1px solid white;
-    color: white;
-    padding: 8px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 25px;
-}
-
-.hero {
-    background: linear-gradient(135deg, #0b1f3a, #164d7a);
-    color: white;
-    padding: 35px;
-    border-radius: 20px;
-    margin-bottom: 25px;
-}
-
-.hero h1 {
-    font-size: 34px;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    opacity: .9;
-    line-height: 1.5;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.card {
-    background: white;
-    border-radius: 18px;
-    padding: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.07);
-}
-
-.card h2 {
-    margin-bottom: 12px;
-}
-
-.card p {
-    color: #647084;
-    line-height: 1.5;
-}
-
-.alert-card {
-    text-align: center;
-}
-
-.alert-button {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: none;
-    background: #e63946;
-    color: white;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 10px 30px rgba(230,57,70,.35);
-    transition: .2s;
-    margin: 20px auto;
-    display: block;
-}
-
-.alert-button:hover {
-    transform: scale(1.05);
-}
-
-.alert-button:active {
-    transform: scale(.95);
-}
-
-button {
-    cursor: pointer;
-}
-
-.primary {
-    background: #1769aa;
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    border-radius: 10px;
-    margin-top: 15px;
-    font-size: 15px;
-}
-
-.green {
-    background: #35b978;
-}
-
-input {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #ccd3dd;
-    border-radius: 9px;
-    margin-top: 8px;
-    margin-bottom: 12px;
-    font-size: 15px;
-}
-
-.location {
-    margin-top: 15px;
-    padding: 15px;
-    background: #eef7ff;
-    border-radius: 10px;
-    word-break: break-word;
-}
-
-.map {
-    width: 100%;
-    height: 300px;
-    border: none;
-    border-radius: 14px;
-    margin-top: 15px;
-}
-
-.status {
-    margin-top: 12px;
-    font-weight: bold;
-}
-
-.success {
-    color: #159957;
-}
-
-.danger {
-    color: #e63946;
-}
-
-.hidden {
-    display: none;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #777;
-}
-
-@media (max-width: 700px) {
-    .grid {
-        grid-template-columns: 1fr;
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    .hero h1 {
-        font-size: 27px;
+    body {
+      background: #f4f7fb;
+      color: #17202a;
     }
 
-    .container {
-        padding: 15px;
+    .app {
+      max-width: 480px;
+      min-height: 100vh;
+      margin: auto;
+      background: #ffffff;
+      box-shadow: 0 0 25px rgba(0,0,0,0.08);
+      overflow: hidden;
     }
-}
-</style>
+
+    /* HEADER */
+
+    .header {
+      background: linear-gradient(135deg, #0b5cff, #174ea6);
+      color: white;
+      padding: 25px 22px;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 45px;
+      height: 45px;
+      border-radius: 14px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b5cff;
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .logo-text h1 {
+      font-size: 20px;
+    }
+
+    .logo-text p {
+      font-size: 12px;
+      opacity: 0.85;
+      margin-top: 3px;
+    }
+
+    .profile-btn {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .welcome {
+      margin-top: 28px;
+    }
+
+    .welcome h2 {
+      font-size: 25px;
+      margin-bottom: 7px;
+    }
+
+    .welcome p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* CONTENT */
+
+    .content {
+      padding: 20px;
+    }
+
+    .status-card {
+      background: #eef5ff;
+      border: 1px solid #d8e7ff;
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 20px;
+    }
+
+    .status-icon {
+      width: 42px;
+      height: 42px;
+      background: #dceaff;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b5cff;
+      font-size: 20px;
+    }
+
+    .status-text h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .status-text p {
+      font-size: 12px;
+      color: #657383;
+    }
+
+    /* ALERT */
+
+    .alert-main {
+      background: linear-gradient(135deg, #ff334f, #d71938);
+      color: white;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 10px 25px rgba(215,25,56,0.22);
+      margin-bottom: 22px;
+    }
+
+    .alert-main h2 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .alert-main p {
+      font-size: 13px;
+      opacity: 0.9;
+      margin-bottom: 18px;
+    }
+
+    .main-alert-btn {
+      width: 100%;
+      border: none;
+      background: white;
+      color: #d71938;
+      padding: 15px;
+      border-radius: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .main-alert-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* QUICK ALERTS */
+
+    .section-title {
+      margin-bottom: 13px;
+      font-size: 17px;
+    }
+
+    .alerts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 23px;
+    }
+
+    .alert-option {
+      border: 1px solid #e2e8f0;
+      background: white;
+      border-radius: 18px;
+      padding: 17px 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: 0.2s;
+    }
+
+    .alert-option:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .alert-option .icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: #f0f4fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .alert-option strong {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .alert-option span {
+      color: #718096;
+      font-size: 11px;
+    }
+
+    /* MAP */
+
+    .map-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 17px;
+      margin-bottom: 20px;
+    }
+
+    .map-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .map-header h3 {
+      font-size: 16px;
+    }
+
+    .location-status {
+      font-size: 11px;
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    .map-placeholder {
+      min-height: 150px;
+      border-radius: 15px;
+      background:
+        linear-gradient(rgba(220,230,242,0.65) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(220,230,242,0.65) 1px, transparent 1px);
+      background-size: 28px 28px;
+      background-color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .map-placeholder div {
+      background: white;
+      padding: 13px 16px;
+      border-radius: 14px;
+      box-shadow: 0 5px 16px rgba(0,0,0,0.08);
+    }
+
+    .map-placeholder p {
+      font-size: 12px;
+      color: #667085;
+      margin-top: 5px;
+    }
+
+    .map-btn {
+      width: 100%;
+      border: none;
+      background: #0b5cff;
+      color: white;
+      padding: 13px;
+      margin-top: 12px;
+      border-radius: 13px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* TRUSTED CONTACT */
+
+    .contact-card {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 20px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .contact-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 13px;
+    }
+
+    .contact-info {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .contact-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #dceaff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+    }
+
+    .contact-info h3 {
+      font-size: 14px;
+    }
+
+    .contact-info p {
+      font-size: 11px;
+      color: #667085;
+      margin-top: 3px;
+    }
+
+    .edit-btn {
+      border: none;
+      background: none;
+      color: #0b5cff;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .contact-input {
+      width: 100%;
+      border: 1px solid #dbe2ea;
+      border-radius: 11px;
+      padding: 11px;
+      margin-bottom: 8px;
+      outline: none;
+    }
+
+    .save-contact {
+      width: 100%;
+      border: none;
+      background: #17202a;
+      color: white;
+      padding: 11px;
+      border-radius: 11px;
+      cursor: pointer;
+    }
+
+    /* SAFE BUTTON */
+
+    .safe-btn {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid #22a06b;
+      background: white;
+      color: #178553;
+      border-radius: 17px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      margin-bottom: 25px;
+    }
+
+    /* NAV */
+
+    .bottom-nav {
+      position: sticky;
+      bottom: 0;
+      background: white;
+      border-top: 1px solid #edf0f3;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 10px 5px;
+    }
+
+    .nav-item {
+      border: none;
+      background: none;
+      font-size: 11px;
+      color: #7b8794;
+      cursor: pointer;
+      padding: 7px 0;
+    }
+
+    .nav-item.active {
+      color: #0b5cff;
+      font-weight: bold;
+    }
+
+    /* MODAL */
+
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal {
+      background: white;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 25px;
+      padding: 24px;
+      animation: showModal 0.2s ease;
+    }
+
+    @keyframes showModal {
+      from {
+        transform: scale(0.94);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal h2 {
+      margin-bottom: 8px;
+    }
+
+    .modal p {
+      font-size: 13px;
+      color: #667085;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .modal-actions {
+      display: grid;
+      gap: 9px;
+    }
+
+    .modal-actions button {
+      border: none;
+      padding: 13px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .confirm-alert {
+      background: #d71938;
+      color: white;
+    }
+
+    .cancel-alert {
+      background: #edf2f7;
+      color: #17202a;
+    }
+
+    /* LOGIN */
+
+    .login-screen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #0b5cff, #174ea6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 500;
+    }
+
+    .login-box {
+      background: white;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 25px;
+      padding: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .login-logo {
+      width: 65px;
+      height: 65px;
+      border-radius: 20px;
+      background: #0b5cff;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .login-box h1 {
+      text-align: center;
+      margin-bottom: 7px;
+    }
+
+    .login-box > p {
+      text-align: center;
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d8dee7;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+
+    .login-btn {
+      width: 100%;
+      border: none;
+      background: #0b5cff;
+      color: white;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (min-width: 700px) {
+      body {
+        padding: 30px 0;
+      }
+
+      .app {
+        border-radius: 25px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <div class="logo">Ruta <span>Segura</span></div>
-    <button onclick="mostrarInfo()">¿Cómo funciona?</button>
-</header>
+  <!-- LOGIN -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-box">
 
-<main class="container">
+      <div class="login-logo">🛡</div>
 
-    <section class="hero">
-        <h1>Tu seguridad, siempre cerca.</h1>
+      <h1>Ruta Segura</h1>
+      <p>Tu seguridad, siempre cerca.</p>
+
+      <input
+        type="text"
+        class="login-input"
+        id="userName"
+        placeholder="Tu nombre"
+      >
+
+      <input
+        type="tel"
+        class="login-input"
+        id="userPhone"
+        placeholder="Tu número de teléfono"
+      >
+
+      <button class="login-btn" onclick="startApp()">
+        Entrar
+      </button>
+
+    </div>
+  </div>
+
+
+  <!-- APP -->
+  <div class="app hidden" id="app">
+
+    <header class="header">
+
+      <div class="header-top">
+
+        <div class="logo-area">
+
+          <div class="logo">
+            🛡
+          </div>
+
+          <div class="logo-text">
+            <h1>Ruta Segura</h1>
+            <p>Tu seguridad, siempre cerca</p>
+          </div>
+
+        </div>
+
+        <button class="profile-btn" onclick="logout()">
+          👤
+        </button>
+
+      </div>
+
+      <div class="welcome">
+        <h2 id="welcomeName">Hola 👋</h2>
+        <p>¿Todo bien? Estamos preparados para ayudarte.</p>
+      </div>
+
+    </header>
+
+
+    <main class="content">
+
+      <!-- STATUS -->
+      <div class="status-card">
+
+        <div class="status-icon">
+          📍
+        </div>
+
+        <div class="status-text">
+          <h3 id="gpsStatus">
+            Ubicación no activada
+          </h3>
+
+          <p id="gpsDescription">
+            Activá el GPS para utilizar las alertas.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- MAIN ALERT -->
+      <div class="alert-main">
+
+        <h2>🚨 Necesito ayuda</h2>
+
         <p>
-            Ruta Segura es una herramienta diseñada para ayudarte
-            cuando te sentís inseguro mientras estás en la calle.
+          Envía una alerta rápida a tu contacto de confianza.
         </p>
-    </section>
 
-    <section class="grid">
+        <button
+          class="main-alert-btn"
+          onclick="openAlert('Necesito ayuda')"
+        >
+          ENVIAR ALERTA
+        </button>
 
-        <div class="card alert-card">
-            <h2>🚨 Alerta de emergencia</h2>
+      </div>
 
-            <p>
-                Presioná el botón si necesitás avisar rápidamente
-                a tu contacto de confianza.
-            </p>
 
-            <button class="alert-button" onclick="activarAlerta()">
-                ALERTA
-            </button>
+      <!-- QUICK ALERTS -->
 
-            <div id="alertStatus" class="status"></div>
+      <h3 class="section-title">
+        Alertas rápidas
+      </h3>
+
+      <div class="alerts-grid">
+
+        <button
+          class="alert-option"
+          onclick="openAlert('Me están robando')"
+        >
+          <div class="icon">🚨</div>
+          <strong>Me están robando</strong>
+          <span>Enviar alerta inmediata</span>
+        </button>
+
+
+        <button
+          class="alert-option"
+          onclick="openAlert('Estoy en peligro')"
+        >
+          <div class="icon">⚠️</div>
+          <strong>Estoy en peligro</strong>
+          <span>Necesito ayuda</span>
+        </button>
+
+
+        <button
+          class="alert-option"
+          onclick="openAlert('Tuve un accidente')"
+        >
+          <div class="icon">🚑</div>
+          <strong>Tuve un accidente</strong>
+          <span>Solicitar asistencia</span>
+        </button>
+
+
+        <button
+          class="alert-option"
+          onclick="openAlert('No me siento seguro/a')"
+        >
+          <div class="icon">🆘</div>
+          <strong>No me siento seguro/a</strong>
+          <span>Contactar a mi persona de confianza</span>
+        </button>
+
+      </div>
+
+
+      <!-- MAP -->
+
+      <div class="map-card">
+
+        <div class="map-header">
+
+          <h3>📍 Mi ubicación</h3>
+
+          <span
+            class="location-status"
+            id="locationStatus"
+          >
+            GPS pendiente
+          </span>
+
         </div>
 
-        <div class="card">
-            <h2>👤 Contacto de confianza</h2>
+        <div class="map-placeholder">
+
+          <div>
+
+            <strong id="coordinates">
+              Esperando ubicación...
+            </strong>
 
             <p>
-                Guardá una persona que pueda ayudarte en caso
-                de emergencia.
+              La ubicación se actualizará desde tu dispositivo.
             </p>
 
-            <label>Nombre</label>
-            <input id="contactName" type="text" placeholder="Ej: Mamá">
+          </div>
 
-            <label>Teléfono</label>
-            <input id="contactPhone" type="tel" placeholder="Ej: 2477...">
-
-            <button class="primary green" onclick="guardarContacto()">
-                Guardar contacto
-            </button>
-
-            <div id="contactStatus" class="status"></div>
         </div>
 
-        <div class="card">
-            <h2>📍 Mi ubicación</h2>
+        <button
+          class="map-btn"
+          onclick="getLocation()"
+        >
+          Actualizar ubicación
+        </button>
 
-            <p>
-                Ruta Segura puede obtener tu ubicación actual
-                utilizando el GPS de tu dispositivo.
-            </p>
+      </div>
 
-            <button class="primary" onclick="obtenerUbicacion()">
-                Obtener ubicación
-            </button>
 
-            <div id="location" class="location">
-                Ubicación todavía no obtenida.
+      <!-- CONTACT -->
+
+      <div class="contact-card">
+
+        <div class="contact-top">
+
+          <div class="contact-info">
+
+            <div class="contact-avatar">
+              👤
             </div>
 
-            <iframe
-                id="map"
-                class="map hidden"
-                loading="lazy">
-            </iframe>
-        </div>
+            <div>
 
-        <div class="card">
-            <h2>🛡️ Estado de seguridad</h2>
+              <h3 id="contactNameDisplay">
+                Contacto de confianza
+              </h3>
 
-            <p>
-                Utilizá esta sección para comprobar rápidamente
-                que tus datos principales estén configurados.
-            </p>
+              <p id="contactPhoneDisplay">
+                Sin configurar
+              </p>
 
-            <div id="securityStatus" class="location">
-                Comprobando...
             </div>
 
-            <button class="primary" onclick="actualizarEstado()">
-                Actualizar estado
-            </button>
+          </div>
+
+          <button
+            class="edit-btn"
+            onclick="toggleContactForm()"
+          >
+            Editar
+          </button>
+
         </div>
 
-    </section>
 
-</main>
+        <div id="contactForm" class="hidden">
 
-<footer>
-    Ruta Segura © 2026 — Proyecto educativo
-</footer>
+          <input
+            class="contact-input"
+            type="text"
+            id="contactName"
+            placeholder="Nombre del contacto"
+          >
 
+          <input
+            class="contact-input"
+            type="tel"
+            id="contactPhone"
+            placeholder="Número de WhatsApp"
+          >
 
-<script>
+          <button
+            class="save-contact"
+            onclick="saveContact()"
+          >
+            Guardar contacto
+          </button>
 
-let latitude = null;
-let longitude = null;
+        </div>
 
-
-// CARGAR CONTACTO GUARDADO
-
-window.onload = function() {
-
-    const name = localStorage.getItem("ruta_contact_name");
-    const phone = localStorage.getItem("ruta_contact_phone");
-
-    if (name) {
-        document.getElementById("contactName").value = name;
-    }
-
-    if (phone) {
-        document.getElementById("contactPhone").value = phone;
-    }
-
-    actualizarEstado();
-};
+      </div>
 
 
-// GUARDAR CONTACTO
+      <!-- SAFE -->
 
-function guardarContacto() {
+      <button
+        class="safe-btn"
+        onclick="safeMessage()"
+      >
+        ✅ ESTOY SEGURO/A
+      </button>
 
-    const name = document.getElementById("contactName").value.trim();
-    const phone = document.getElementById("contactPhone").value.trim();
+    </main>
 
-    if (!name || !phone) {
-        document.getElementById("contactStatus").innerHTML =
-            '<span class="danger">Completá todos los campos.</span>';
+
+    <!-- BOTTOM NAV -->
+
+    <nav class="bottom-nav">
+
+      <button class="nav-item active">
+        🏠<br>
+        Inicio
+      </button>
+
+      <button
+        class="nav-item"
+        onclick="getLocation()"
+      >
+        📍<br>
+        Ubicación
+      </button>
+
+      <button
+        class="nav-item"
+        onclick="toggleContactForm()"
+      >
+        👤<br>
+        Contacto
+      </button>
+
+      <button
+        class="nav-item"
+        onclick="alert('Próximamente: configuración de Ruta Segura')"
+      >
+        ⚙️<br>
+        Ajustes
+      </button>
+
+    </nav>
+
+  </div>
+
+
+  <!-- ALERT MODAL -->
+
+  <div
+    class="modal-bg"
+    id="alertModal"
+  >
+
+    <div class="modal">
+
+      <h2 id="modalTitle">
+        Confirmar alerta
+      </h2>
+
+      <p id="modalText">
+        Se enviará una alerta a tu contacto de confianza.
+      </p>
+
+      <div class="modal-actions">
+
+        <button
+          class="confirm-alert"
+          onclick="sendWhatsApp()"
+        >
+          🚨 Confirmar y abrir WhatsApp
+        </button>
+
+        <button
+          class="cancel-alert"
+          onclick="closeModal()"
+        >
+          Cancelar
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    let currentAlert = "";
+    let latitude = null;
+    let longitude = null;
+
+    /* ==============================
+       INICIO
+    ============================== */
+
+    function startApp() {
+
+      const name = document.getElementById("userName").value.trim();
+      const phone = document.getElementById("userPhone").value.trim();
+
+      if (!name) {
+        alert("Ingresá tu nombre.");
         return;
+      }
+
+      localStorage.setItem("rutaSeguraUser", name);
+
+      if (phone) {
+        localStorage.setItem("rutaSeguraPhone", phone);
+      }
+
+      document.getElementById("loginScreen").classList.add("hidden");
+      document.getElementById("app").classList.remove("hidden");
+
+      document.getElementById("welcomeName").textContent =
+        "Hola " + name + " 👋";
+
+      loadContact();
+      getLocation();
     }
 
-    localStorage.setItem("ruta_contact_name", name);
-    localStorage.setItem("ruta_contact_phone", phone);
 
-    document.getElementById("contactStatus").innerHTML =
-        '<span class="success">✓ Contacto guardado correctamente.</span>';
+    /* ==============================
+       CARGAR USUARIO
+    ============================== */
 
-    actualizarEstado();
-}
+    window.onload = function() {
+
+      const savedName = localStorage.getItem("rutaSeguraUser");
+
+      if (savedName) {
+
+        document.getElementById("loginScreen").classList.add("hidden");
+        document.getElementById("app").classList.remove("hidden");
+
+        document.getElementById("welcomeName").textContent =
+          "Hola " + savedName + " 👋";
+
+        loadContact();
+        getLocation();
+      }
+
+    };
 
 
-// OBTENER GPS
+    /* ==============================
+       GPS
+    ============================== */
 
-function obtenerUbicacion() {
+    function getLocation() {
 
-    const locationBox = document.getElementById("location");
+      if (!navigator.geolocation) {
 
-    if (!navigator.geolocation) {
+        document.getElementById("gpsStatus").textContent =
+          "GPS no disponible";
 
-        locationBox.innerHTML =
-            '<span class="danger">Tu navegador no permite utilizar GPS.</span>';
+        document.getElementById("gpsDescription").textContent =
+          "Este navegador no permite obtener tu ubicación.";
 
         return;
-    }
+      }
 
-    locationBox.innerHTML = "📍 Obteniendo ubicación...";
+      document.getElementById("gpsStatus").textContent =
+        "Obteniendo ubicación...";
 
-    navigator.geolocation.getCurrentPosition(
+      navigator.geolocation.getCurrentPosition(
 
         function(position) {
 
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
+          latitude = position.coords.latitude;
+          longitude = position.coords.longitude;
 
-            locationBox.innerHTML =
-                "📍 Latitud: " + latitude.toFixed(6) +
-                "<br>📍 Longitud: " + longitude.toFixed(6) +
-                "<br><br>✓ Ubicación obtenida.";
+          document.getElementById("gpsStatus").textContent =
+            "Ubicación activa";
 
-            const map = document.getElementById("map");
+          document.getElementById("gpsDescription").textContent =
+            "Tu ubicación fue obtenida correctamente.";
 
-            map.src =
-                "https://www.google.com/maps?q=" +
-                latitude + "," +
-                longitude +
-                "&z=16&output=embed";
+          document.getElementById("locationStatus").textContent =
+            "GPS activo";
 
-            map.classList.remove("hidden");
+          document.getElementById("coordinates").textContent =
+            latitude.toFixed(6) +
+            ", " +
+            longitude.toFixed(6);
 
-            actualizarEstado();
         },
 
         function(error) {
 
-            if (error.code === 1) {
-                locationBox.innerHTML =
-                    '<span class="danger">Permiso de ubicación rechazado.</span>';
-            }
+          document.getElementById("gpsStatus").textContent =
+            "No se pudo obtener la ubicación";
 
-            else if (error.code === 2) {
-                locationBox.innerHTML =
-                    '<span class="danger">No se pudo obtener tu ubicación.</span>';
-            }
+          document.getElementById("gpsDescription").textContent =
+            "Permití el acceso a la ubicación desde el navegador.";
 
-            else {
-                locationBox.innerHTML =
-                    '<span class="danger">Ocurrió un error obteniendo el GPS.</span>';
-            }
+          document.getElementById("locationStatus").textContent =
+            "GPS pendiente";
+
+          console.log(error);
+
         },
 
         {
-            enableHighAccuracy: true,
-            timeout: 10000,
-            maximumAge: 0
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
         }
-    );
-}
+
+      );
+
+    }
 
 
-// ALERTA
+    /* ==============================
+       ALERTA
+    ============================== */
 
-function activarAlerta() {
+    function openAlert(type) {
 
-    const status = document.getElementById("alertStatus");
+      currentAlert = type;
 
-    const name = localStorage.getItem("ruta_contact_name");
-    const phone = localStorage.getItem("ruta_contact_phone");
+      getLocation();
 
-    if (!name || !phone) {
+      document.getElementById("modalTitle").textContent =
+        "🚨 " + type;
 
-        status.innerHTML =
-            '<span class="danger">Primero guardá un contacto de confianza.</span>';
+      document.getElementById("modalText").textContent =
+        "Se preparará un mensaje para tu contacto de confianza con el tipo de alerta y tu ubicación.";
+
+      document.getElementById("alertModal").style.display =
+        "flex";
+    }
+
+
+    function closeModal() {
+
+      document.getElementById("alertModal").style.display =
+        "none";
+
+    }
+
+
+    /* ==============================
+       WHATSAPP
+    ============================== */
+
+    function sendWhatsApp() {
+
+      const contactPhone =
+        localStorage.getItem("rutaSeguraContactPhone");
+
+      if (!contactPhone) {
+
+        closeModal();
+
+        alert(
+          "Primero configurá un contacto de confianza."
+        );
+
+        toggleContactForm();
 
         return;
+      }
+
+
+      let message =
+        "🚨 ALERTA - RUTA SEGURA%0A%0A";
+
+      message +=
+        "Tipo de alerta: " +
+        currentAlert +
+        "%0A";
+
+      message +=
+        "Necesito ayuda.%0A%0A";
+
+
+      if (
+        latitude !== null &&
+        longitude !== null
+      ) {
+
+        const mapUrl =
+          "https://www.google.com/maps?q=" +
+          latitude +
+          "," +
+          longitude;
+
+        message +=
+          "📍 Mi ubicación:%0A" +
+          mapUrl;
+
+      } else {
+
+        message +=
+          "📍 No se pudo obtener mi ubicación.";
+
+      }
+
+
+      let phone = contactPhone.replace(/\D/g, "");
+
+      /*
+        Argentina:
+        Si guardás un número como 11XXXXXXXX,
+        se intenta utilizar directamente.
+      */
+
+      if (
+        phone.startsWith("0")
+      ) {
+        phone = phone.substring(1);
+      }
+
+
+      const whatsappUrl =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        message;
+
+
+      closeModal();
+
+      window.open(
+        whatsappUrl,
+        "_blank"
+      );
+
     }
 
-    status.innerHTML = "📍 Obteniendo ubicación...";
 
-    if (!navigator.geolocation) {
+    /* ==============================
+       CONTACTO
+    ============================== */
 
-        status.innerHTML =
-            '<span class="danger">El GPS no está disponible.</span>';
+    function toggleContactForm() {
+
+      const form =
+        document.getElementById("contactForm");
+
+      form.classList.toggle("hidden");
+
+    }
+
+
+    function saveContact() {
+
+      const name =
+        document.getElementById("contactName").value.trim();
+
+      const phone =
+        document.getElementById("contactPhone").value.trim();
+
+
+      if (!name || !phone) {
+
+        alert(
+          "Completá el nombre y el número."
+        );
 
         return;
+      }
+
+
+      localStorage.setItem(
+        "rutaSeguraContactName",
+        name
+      );
+
+      localStorage.setItem(
+        "rutaSeguraContactPhone",
+        phone
+      );
+
+
+      loadContact();
+
+      document
+        .getElementById("contactForm")
+        .classList.add("hidden");
+
+
+      alert(
+        "Contacto de confianza guardado correctamente."
+      );
+
     }
 
-    navigator.geolocation.getCurrentPosition(
 
-        function(position) {
+    function loadContact() {
 
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
+      const name =
+        localStorage.getItem(
+          "rutaSeguraContactName"
+        );
 
-            const mapsLink =
-                "https://www.google.com/maps?q=" +
-                latitude + "," + longitude;
-
-            const mensaje =
-                "🚨 ALERTA DE RUTA SEGURA 🚨%0A%0A" +
-                "Necesito ayuda. Esta es mi ubicación:%0A" +
-                mapsLink;
-
-            status.innerHTML =
-                '<span class="success">🚨 Alerta preparada con tu ubicación.</span>' +
-                '<br><br>' +
-                '<a href="https://wa.me/?text=' +
-                mensaje +
-                '" target="_blank">Enviar alerta por WhatsApp</a>';
-
-        },
-
-        function() {
-
-            status.innerHTML =
-                '<span class="danger">No se pudo obtener tu ubicación.</span>';
-        },
-
-        {
-            enableHighAccuracy: true,
-            timeout: 10000,
-            maximumAge: 0
-        }
-    );
-}
+      const phone =
+        localStorage.getItem(
+          "rutaSeguraContactPhone"
+        );
 
 
-// ESTADO DE SEGURIDAD
+      if (name) {
 
-function actualizarEstado() {
+        document.getElementById(
+          "contactNameDisplay"
+        ).textContent = name;
 
-    const box = document.getElementById("securityStatus");
+      }
 
-    const name = localStorage.getItem("ruta_contact_name");
-    const phone = localStorage.getItem("ruta_contact_phone");
 
-    let texto = "";
+      if (phone) {
 
-    if (name && phone) {
-        texto += "✓ Contacto de confianza configurado.<br>";
-    } else {
-        texto += "⚠ Falta configurar un contacto de confianza.<br>";
+        document.getElementById(
+          "contactPhoneDisplay"
+        ).textContent = phone;
+
+      }
+
     }
 
-    if (latitude && longitude) {
-        texto += "✓ Ubicación disponible.";
-    } else {
-        texto += "⚠ Ubicación todavía no obtenida.";
+
+    /* ==============================
+       ESTOY SEGURO
+    ============================== */
+
+    function safeMessage() {
+
+      alert(
+        "✅ Estado actualizado: estás seguro/a."
+      );
+
     }
 
-    box.innerHTML = texto;
-}
 
+    /* ==============================
+       SALIR
+    ============================== */
 
-// INFORMACIÓN
+    function logout() {
 
-function mostrarInfo() {
+      document
+        .getElementById("app")
+        .classList.add("hidden");
 
-    alert(
-        "RUTA SEGURA\n\n" +
-        "La página permite guardar un contacto de confianza " +
-        "y obtener la ubicación actual mediante el GPS.\n\n" +
-        "El botón de alerta prepara un mensaje con un enlace " +
-        "a la ubicación para compartirlo por WhatsApp."
-    );
-}
+      document
+        .getElementById("loginScreen")
+        .classList.remove("hidden");
 
-</script>
+    }
+
+  </script>
 
 </body>
 </html>
