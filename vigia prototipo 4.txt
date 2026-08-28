@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruta Segura</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f3f6fa;
+    color: #172033;
+}
+
+header {
+    background: #0b1f3a;
+    color: white;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #35d07f;
+}
+
+header button {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 25px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #0b1f3a, #164d7a);
+    color: white;
+    padding: 35px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    opacity: .9;
+    line-height: 1.5;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2 {
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #647084;
+    line-height: 1.5;
+}
+
+.alert-card {
+    text-align: center;
+}
+
+.alert-button {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: none;
+    background: #e63946;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(230,57,70,.35);
+    transition: .2s;
+    margin: 20px auto;
+    display: block;
+}
+
+.alert-button:hover {
+    transform: scale(1.05);
+}
+
+.alert-button:active {
+    transform: scale(.95);
+}
+
+button {
+    cursor: pointer;
+}
+
+.primary {
+    background: #1769aa;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.green {
+    background: #35b978;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccd3dd;
+    border-radius: 9px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.location {
+    margin-top: 15px;
+    padding: 15px;
+    background: #eef7ff;
+    border-radius: 10px;
+    word-break: break-word;
+}
+
+.map {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 14px;
+    margin-top: 15px;
+}
+
+.status {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+.success {
+    color: #159957;
+}
+
+.danger {
+    color: #e63946;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}
+
+@media (max-width: 700px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Ruta <span>Segura</span></div>
+    <button onclick="mostrarInfo()">¿Cómo funciona?</button>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <h1>Tu seguridad, siempre cerca.</h1>
+        <p>
+            Ruta Segura es una herramienta diseñada para ayudarte
+            cuando te sentís inseguro mientras estás en la calle.
+        </p>
+    </section>
+
+    <section class="grid">
+
+        <div class="card alert-card">
+            <h2>🚨 Alerta de emergencia</h2>
+
+            <p>
+                Presioná el botón si necesitás avisar rápidamente
+                a tu contacto de confianza.
+            </p>
+
+            <button class="alert-button" onclick="activarAlerta()">
+                ALERTA
+            </button>
+
+            <div id="alertStatus" class="status"></div>
+        </div>
+
+        <div class="card">
+            <h2>👤 Contacto de confianza</h2>
+
+            <p>
+                Guardá una persona que pueda ayudarte en caso
+                de emergencia.
+            </p>
+
+            <label>Nombre</label>
+            <input id="contactName" type="text" placeholder="Ej: Mamá">
+
+            <label>Teléfono</label>
+            <input id="contactPhone" type="tel" placeholder="Ej: 2477...">
+
+            <button class="primary green" onclick="guardarContacto()">
+                Guardar contacto
+            </button>
+
+            <div id="contactStatus" class="status"></div>
+        </div>
+
+        <div class="card">
+            <h2>📍 Mi ubicación</h2>
+
+            <p>
+                Ruta Segura puede obtener tu ubicación actual
+                utilizando el GPS de tu dispositivo.
+            </p>
+
+            <button class="primary" onclick="obtenerUbicacion()">
+                Obtener ubicación
+            </button>
+
+            <div id="location" class="location">
+                Ubicación todavía no obtenida.
+            </div>
+
+            <iframe
+                id="map"
+                class="map hidden"
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <div class="card">
+            <h2>🛡️ Estado de seguridad</h2>
+
+            <p>
+                Utilizá esta sección para comprobar rápidamente
+                que tus datos principales estén configurados.
+            </p>
+
+            <div id="securityStatus" class="location">
+                Comprobando...
+            </div>
+
+            <button class="primary" onclick="actualizarEstado()">
+                Actualizar estado
+            </button>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    Ruta Segura © 2026 — Proyecto educativo
+</footer>
+
+
+<script>
+
+let latitude = null;
+let longitude = null;
+
+
+// CARGAR CONTACTO GUARDADO
+
+window.onload = function() {
+
+    const name = localStorage.getItem("ruta_contact_name");
+    const phone = localStorage.getItem("ruta_contact_phone");
+
+    if (name) {
+        document.getElementById("contactName").value = name;
+    }
+
+    if (phone) {
+        document.getElementById("contactPhone").value = phone;
+    }
+
+    actualizarEstado();
+};
+
+
+// GUARDAR CONTACTO
+
+function guardarContacto() {
+
+    const name = document.getElementById("contactName").value.trim();
+    const phone = document.getElementById("contactPhone").value.trim();
+
+    if (!name || !phone) {
+        document.getElementById("contactStatus").innerHTML =
+            '<span class="danger">Completá todos los campos.</span>';
+        return;
+    }
+
+    localStorage.setItem("ruta_contact_name", name);
+    localStorage.setItem("ruta_contact_phone", phone);
+
+    document.getElementById("contactStatus").innerHTML =
+        '<span class="success">✓ Contacto guardado correctamente.</span>';
+
+    actualizarEstado();
+}
+
+
+// OBTENER GPS
+
+function obtenerUbicacion() {
+
+    const locationBox = document.getElementById("location");
+
+    if (!navigator.geolocation) {
+
+        locationBox.innerHTML =
+            '<span class="danger">Tu navegador no permite utilizar GPS.</span>';
+
+        return;
+    }
+
+    locationBox.innerHTML = "📍 Obteniendo ubicación...";
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
+            locationBox.innerHTML =
+                "📍 Latitud: " + latitude.toFixed(6) +
+                "<br>📍 Longitud: " + longitude.toFixed(6) +
+                "<br><br>✓ Ubicación obtenida.";
+
+            const map = document.getElementById("map");
+
+            map.src =
+                "https://www.google.com/maps?q=" +
+                latitude + "," +
+                longitude +
+                "&z=16&output=embed";
+
+            map.classList.remove("hidden");
+
+            actualizarEstado();
+        },
+
+        function(error) {
+
+            if (error.code === 1) {
+                locationBox.innerHTML =
+                    '<span class="danger">Permiso de ubicación rechazado.</span>';
+            }
+
+            else if (error.code === 2) {
+                locationBox.innerHTML =
+                    '<span class="danger">No se pudo obtener tu ubicación.</span>';
+            }
+
+            else {
+                locationBox.innerHTML =
+                    '<span class="danger">Ocurrió un error obteniendo el GPS.</span>';
+            }
+        },
+
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        }
+    );
+}
+
+
+// ALERTA
+
+function activarAlerta() {
+
+    const status = document.getElementById("alertStatus");
+
+    const name = localStorage.getItem("ruta_contact_name");
+    const phone = localStorage.getItem("ruta_contact_phone");
+
+    if (!name || !phone) {
+
+        status.innerHTML =
+            '<span class="danger">Primero guardá un contacto de confianza.</span>';
+
+        return;
+    }
+
+    status.innerHTML = "📍 Obteniendo ubicación...";
+
+    if (!navigator.geolocation) {
+
+        status.innerHTML =
+            '<span class="danger">El GPS no está disponible.</span>';
+
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
+            const mapsLink =
+                "https://www.google.com/maps?q=" +
+                latitude + "," + longitude;
+
+            const mensaje =
+                "🚨 ALERTA DE RUTA SEGURA 🚨%0A%0A" +
+                "Necesito ayuda. Esta es mi ubicación:%0A" +
+                mapsLink;
+
+            status.innerHTML =
+                '<span class="success">🚨 Alerta preparada con tu ubicación.</span>' +
+                '<br><br>' +
+                '<a href="https://wa.me/?text=' +
+                mensaje +
+                '" target="_blank">Enviar alerta por WhatsApp</a>';
+
+        },
+
+        function() {
+
+            status.innerHTML =
+                '<span class="danger">No se pudo obtener tu ubicación.</span>';
+        },
+
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        }
+    );
+}
+
+
+// ESTADO DE SEGURIDAD
+
+function actualizarEstado() {
+
+    const box = document.getElementById("securityStatus");
+
+    const name = localStorage.getItem("ruta_contact_name");
+    const phone = localStorage.getItem("ruta_contact_phone");
+
+    let texto = "";
+
+    if (name && phone) {
+        texto += "✓ Contacto de confianza configurado.<br>";
+    } else {
+        texto += "⚠ Falta configurar un contacto de confianza.<br>";
+    }
+
+    if (latitude && longitude) {
+        texto += "✓ Ubicación disponible.";
+    } else {
+        texto += "⚠ Ubicación todavía no obtenida.";
+    }
+
+    box.innerHTML = texto;
+}
+
+
+// INFORMACIÓN
+
+function mostrarInfo() {
+
+    alert(
+        "RUTA SEGURA\n\n" +
+        "La página permite guardar un contacto de confianza " +
+        "y obtener la ubicación actual mediante el GPS.\n\n" +
+        "El botón de alerta prepara un mensaje con un enlace " +
+        "a la ubicación para compartirlo por WhatsApp."
+    );
+}
+
+</script>
+
+</body>
+</html>
