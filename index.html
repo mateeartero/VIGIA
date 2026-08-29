@@ -1,598 +1,677 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Vigía | Seguridad cerca tuyo</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background:
-                radial-gradient(circle at 15% 20%, rgba(30,220,190,.10), transparent 28%),
-                radial-gradient(circle at 85% 80%, rgba(0,150,255,.10), transparent 30%),
-                #050912;
-            color: #f4f8fb;
-            min-height: 100vh;
-        }
-
-        /* NAVBAR */
-
-        nav {
-            width: 100%;
-            height: 75px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            background: rgba(5,9,18,.88);
-            border-bottom: 1px solid rgba(100,255,225,.08);
-            backdrop-filter: blur(14px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-        }
-
-        .brand img {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
-        }
-
-        .brand-name {
-            font-size: 23px;
-            font-weight: 700;
-        }
-
-        .brand-name span {
-            color: #36e0c0;
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 12px;
-        }
-
-        .nav-btn {
-            background: transparent;
-            color: #dce8ed;
-            border: 1px solid rgba(255,255,255,.10);
-            padding: 10px 17px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: .25s;
-        }
-
-        .nav-btn:hover {
-            border-color: #36e0c0;
-            color: #36e0c0;
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: calc(100vh - 75px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 70px 9%;
-            gap: 70px;
-        }
-
-        .hero-text {
-            max-width: 620px;
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(54,224,192,.25);
-            background: rgba(54,224,192,.07);
-            color: #58e8cf;
-            padding: 8px 14px;
-            border-radius: 30px;
-            font-size: 13px;
-            margin-bottom: 22px;
-        }
-
-        .tag-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #36e0c0;
-            box-shadow: 0 0 12px #36e0c0;
-        }
-
-        h1 {
-            font-size: clamp(45px,6vw,76px);
-            line-height: .98;
-            margin-bottom: 25px;
-            letter-spacing: -3px;
-        }
-
-        h1 span {
-            background: linear-gradient(90deg,#43e3c4,#2da9ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-description {
-            color: #9baab5;
-            font-size: 18px;
-            line-height: 1.7;
-            max-width: 560px;
-            margin-bottom: 32px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
-        .primary-btn {
-            border: none;
-            padding: 15px 25px;
-            border-radius: 12px;
-            background: linear-gradient(135deg,#35dfc0,#198dff);
-            color: #031018;
-            font-weight: 700;
-            font-size: 15px;
-            cursor: pointer;
-            transition: .25s;
-        }
-
-        .primary-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .secondary-btn {
-            border: 1px solid rgba(255,255,255,.13);
-            background: rgba(255,255,255,.03);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: .25s;
-        }
-
-        .secondary-btn:hover {
-            border-color: #36e0c0;
-            color: #36e0c0;
-        }
-
-        /* LOGO */
-
-        .hero-logo {
-            width: 410px;
-            height: 410px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(54,224,192,.13),
-                    rgba(15,24,37,.35) 45%,
-                    rgba(5,9,18,.75) 75%
-                );
-
-            border: 1px solid rgba(73,234,210,.13);
-
-            box-shadow:
-                0 0 80px rgba(28,214,190,.08),
-                inset 0 0 60px rgba(30,120,180,.05);
-        }
-
-        .hero-logo::before {
-            content: "";
-            position: absolute;
-            width: 270px;
-            height: 270px;
-            border-radius: 50%;
-            border: 1px solid rgba(54,224,192,.12);
-        }
-
-        .hero-logo img {
-            width: 300px;
-            height: 300px;
-            object-fit: contain;
-            position: relative;
-            z-index: 2;
-            filter: drop-shadow(0 0 25px rgba(50,220,200,.16));
-        }
-
-        /* FEATURES */
-
-        .features-section {
-            padding: 100px 9%;
-            background: rgba(255,255,255,.015);
-            border-top: 1px solid rgba(255,255,255,.05);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-            margin-bottom: 12px;
-        }
-
-        .section-title p {
-            color: #84949e;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .feature {
-            padding: 30px;
-            border-radius: 20px;
-            background: rgba(255,255,255,.025);
-            border: 1px solid rgba(255,255,255,.07);
-            transition: .3s;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            border-color: rgba(54,224,192,.25);
-        }
-
-        .icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            background: rgba(54,224,192,.08);
-            border: 1px solid rgba(54,224,192,.15);
-        }
-
-        .icon svg {
-            width: 25px;
-            height: 25px;
-            stroke: #42dfc2;
-            fill: none;
-            stroke-width: 1.8;
-        }
-
-        .feature h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .feature p {
-            color: #82919b;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        /* ALERT SECTION */
-
-        .alert-section {
-            padding: 100px 9%;
-        }
-
-        .alert-container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 45px;
-            border-radius: 28px;
-            background:
-                radial-gradient(
-                    circle at top right,
-                    rgba(39,150,255,.08),
-                    transparent 40%
-                ),
-                rgba(255,255,255,.025);
-
-            border: 1px solid rgba(255,255,255,.08);
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .alert-text {
-            max-width: 500px;
-        }
-
-        .alert-text h2 {
-            font-size: 34px;
-            margin-bottom: 15px;
-        }
-
-        .alert-text p {
-            color: #8d9ba5;
-            line-height: 1.6;
-        }
-
-        .alert-card {
-            width: 300px;
-            padding: 25px;
-            border-radius: 20px;
-            background: #090f19;
-            border: 1px solid rgba(255,255,255,.08);
-        }
-
-        .alert-status {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #58e8cf;
-            font-size: 13px;
-            margin-bottom: 18px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #36e0c0;
-            box-shadow: 0 0 12px #36e0c0;
-        }
-
-        .alert-option {
-            width: 100%;
-            border: 1px solid rgba(255,255,255,.07);
-            background: rgba(255,255,255,.025);
-            color: white;
-            padding: 13px;
-            margin-top: 9px;
-            border-radius: 10px;
-            text-align: left;
-            cursor: pointer;
-            transition: .2s;
-        }
-
-        .alert-option:hover {
-            border-color: #36e0c0;
-            background: rgba(54,224,192,.06);
-        }
-
-        .alert-option:active {
-            transform: scale(.98);
-        }
-
-        /* CONTACTO */
-
-        .contact-section {
-            padding: 100px 9%;
-            background: rgba(255,255,255,.015);
-            border-top: 1px solid rgba(255,255,255,.05);
-        }
-
-        .contact-box {
-            max-width: 700px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .contact-box h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-        .contact-box p {
-            color: #8998a2;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
-
-        .contact-info {
-            display: inline-block;
-            padding: 14px 22px;
-            border: 1px solid rgba(54,224,192,.18);
-            background: rgba(54,224,192,.05);
-            border-radius: 12px;
-            color: #58e8cf;
-        }
-
-        /* FOOTER */
-
-        footer {
-            padding: 35px 9%;
-            border-top: 1px solid rgba(255,255,255,.06);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #66757f;
-            font-size: 13px;
-        }
-
-        footer strong {
-            color: #36e0c0;
-        }
-
-        /* MENSAJE */
-
-        .message-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,.75);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .message-modal.active {
-            display: flex;
-        }
-
-        .modal-box {
-            width: 100%;
-            max-width: 430px;
-            background: #09101b;
-            border: 1px solid rgba(54,224,192,.2);
-            border-radius: 20px;
-            padding: 28px;
-            box-shadow: 0 30px 100px rgba(0,0,0,.5);
-        }
-
-        .modal-box h3 {
-            margin-bottom: 15px;
-            font-size: 23px;
-        }
-
-        .modal-box p {
-            color: #84939e;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 18px;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 120px;
-            resize: none;
-            background: #050a12;
-            color: white;
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: 12px;
-            padding: 14px;
-            outline: none;
-            margin-bottom: 15px;
-        }
-
-        textarea:focus {
-            border-color: #36e0c0;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .modal-buttons button {
-            flex: 1;
-        }
-
-        /* RESPONSIVE */
-
-        @media(max-width:850px) {
-
-            nav {
-                padding: 0 5%;
-            }
-
-            .nav-buttons {
-                display: none;
-            }
-
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 60px 6%;
-            }
-
-            .hero-description {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-logo {
-                width: 320px;
-                height: 320px;
-            }
-
-            .hero-logo img {
-                width: 230px;
-                height: 230px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            .alert-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .alert-text {
-                max-width: 100%;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-        }
-
-        @media(max-width:500px) {
-
-            h1 {
-                font-size: 48px;
-            }
-
-            .hero-logo {
-                width: 280px;
-                height: 280px;
-            }
-
-            .hero-logo img {
-                width: 200px;
-                height: 200px;
-            }
-
-            .alert-container {
-                padding: 25px;
-            }
-
-            .alert-card {
-                width: 100%;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vigía | Seguridad cerca tuyo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at 15% 20%,rgba(30,220,190,.10),transparent 28%),
+        radial-gradient(circle at 85% 80%,rgba(0,150,255,.10),transparent 30%),
+        #050912;
+    color:#f4f8fb;
+    min-height:100vh;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:rgba(5,9,18,.88);
+    border-bottom:1px solid rgba(100,255,225,.08);
+    backdrop-filter:blur(14px);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+}
+
+.brand img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+}
+
+.brand-name{
+    font-size:23px;
+    font-weight:700;
+}
+
+.brand-name span{
+    color:#36e0c0;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:12px;
+}
+
+.nav-btn{
+    background:transparent;
+    color:#dce8ed;
+    border:1px solid rgba(255,255,255,.10);
+    padding:10px 17px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.nav-btn:hover{
+    border-color:#36e0c0;
+    color:#36e0c0;
+}
+
+/* HERO */
+
+.hero{
+    min-height:calc(100vh - 75px);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:70px 9%;
+    gap:70px;
+}
+
+.hero-text{
+    max-width:620px;
+}
+
+.tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid rgba(54,224,192,.25);
+    background:rgba(54,224,192,.07);
+    color:#58e8cf;
+    padding:8px 14px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:22px;
+}
+
+.tag-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#36e0c0;
+    box-shadow:0 0 12px #36e0c0;
+}
+
+h1{
+    font-size:clamp(45px,6vw,76px);
+    line-height:.98;
+    margin-bottom:25px;
+    letter-spacing:-3px;
+}
+
+h1 span{
+    background:linear-gradient(90deg,#43e3c4,#2da9ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-description{
+    color:#9baab5;
+    font-size:18px;
+    line-height:1.7;
+    max-width:560px;
+    margin-bottom:32px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+button{
+    font-family:inherit;
+}
+
+.primary-btn{
+    border:none;
+    padding:15px 25px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#35dfc0,#198dff);
+    color:#031018;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.primary-btn:hover{
+    transform:translateY(-2px);
+}
+
+.secondary-btn{
+    border:1px solid rgba(255,255,255,.13);
+    background:rgba(255,255,255,.03);
+    color:white;
+    padding:15px 25px;
+    border-radius:12px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.secondary-btn:hover{
+    border-color:#36e0c0;
+    color:#36e0c0;
+}
+
+/* LOGO */
+
+.hero-logo{
+    width:410px;
+    height:410px;
+    border-radius:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(54,224,192,.13),
+            rgba(15,24,37,.35) 45%,
+            rgba(5,9,18,.75) 75%
+        );
+
+    border:1px solid rgba(73,234,210,.13);
+
+    box-shadow:
+        0 0 80px rgba(28,214,190,.08),
+        inset 0 0 60px rgba(30,120,180,.05);
+}
+
+.hero-logo::before{
+    content:"";
+    position:absolute;
+    width:270px;
+    height:270px;
+    border-radius:50%;
+    border:1px solid rgba(54,224,192,.12);
+}
+
+.hero-logo img{
+    width:300px;
+    height:300px;
+    object-fit:contain;
+    position:relative;
+    z-index:2;
+    filter:drop-shadow(0 0 25px rgba(50,220,200,.16));
+}
+
+/* FEATURES */
+
+.features-section{
+    padding:100px 9%;
+    background:rgba(255,255,255,.015);
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.section-title p{
+    color:#84949e;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.feature{
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.07);
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-5px);
+    border-color:rgba(54,224,192,.25);
+}
+
+.icon{
+    width:52px;
+    height:52px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+    background:rgba(54,224,192,.08);
+    border:1px solid rgba(54,224,192,.15);
+}
+
+.icon svg{
+    width:25px;
+    height:25px;
+    stroke:#42dfc2;
+    fill:none;
+    stroke-width:1.8;
+}
+
+.feature h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:#82919b;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* ALERT SECTION */
+
+.alert-section{
+    padding:100px 9%;
+}
+
+.alert-container{
+    max-width:1000px;
+    margin:auto;
+    padding:45px;
+    border-radius:28px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(39,150,255,.08),
+            transparent 40%
+        ),
+        rgba(255,255,255,.025);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+}
+
+.alert-text{
+    max-width:500px;
+}
+
+.alert-text h2{
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.alert-text p{
+    color:#8d9ba5;
+    line-height:1.6;
+}
+
+.alert-card{
+    width:330px;
+    padding:25px;
+    border-radius:20px;
+    background:#090f19;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.alert-status{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#58e8cf;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#36e0c0;
+    box-shadow:0 0 12px #36e0c0;
+}
+
+.alert-option{
+    width:100%;
+    border:1px solid rgba(255,255,255,.07);
+    background:rgba(255,255,255,.025);
+    color:white;
+    padding:13px;
+    margin-top:9px;
+    border-radius:10px;
+    text-align:left;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.alert-option:hover{
+    border-color:#36e0c0;
+    background:rgba(54,224,192,.06);
+}
+
+.alert-option:active{
+    transform:scale(.98);
+}
+
+/* UBICACION */
+
+.location-panel{
+    margin-top:25px;
+    padding:20px;
+    border-radius:16px;
+    background:rgba(54,224,192,.04);
+    border:1px solid rgba(54,224,192,.12);
+}
+
+.location-title{
+    color:#58e8cf;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.location-data{
+    color:#9baab5;
+    font-size:13px;
+    line-height:1.7;
+    word-break:break-word;
+}
+
+.map-btn{
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 15px;
+    border-radius:9px;
+    border:1px solid rgba(54,224,192,.2);
+    color:#58e8cf;
+    background:rgba(54,224,192,.05);
+    text-decoration:none;
+    font-size:13px;
+}
+
+/* CONTACTO */
+
+.contact-section{
+    padding:100px 9%;
+    background:rgba(255,255,255,.015);
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+}
+
+.contact-box h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.contact-box p{
+    color:#8998a2;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.contact-form{
+    max-width:450px;
+    margin:30px auto;
+}
+
+.contact-form input{
+    width:100%;
+    padding:14px;
+    background:#050a12;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:10px;
+    color:white;
+    outline:none;
+    margin-bottom:12px;
+}
+
+.contact-form input:focus{
+    border-color:#36e0c0;
+}
+
+.contact-info{
+    display:inline-block;
+    padding:14px 22px;
+    border:1px solid rgba(54,224,192,.18);
+    background:rgba(54,224,192,.05);
+    border-radius:12px;
+    color:#58e8cf;
+}
+
+/* FOOTER */
+
+footer{
+    padding:35px 9%;
+    border-top:1px solid rgba(255,255,255,.06);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#66757f;
+    font-size:13px;
+}
+
+footer strong{
+    color:#36e0c0;
+}
+
+/* MODAL */
+
+.message-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.78);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+    padding:20px;
+}
+
+.message-modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:450px;
+    background:#09101b;
+    border:1px solid rgba(54,224,192,.2);
+    border-radius:20px;
+    padding:28px;
+    box-shadow:0 30px 100px rgba(0,0,0,.5);
+}
+
+.modal-box h3{
+    margin-bottom:15px;
+    font-size:23px;
+}
+
+.modal-box p{
+    color:#84939e;
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+textarea{
+    width:100%;
+    min-height:120px;
+    resize:none;
+    background:#050a12;
+    color:white;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:12px;
+    padding:14px;
+    outline:none;
+    margin-bottom:15px;
+}
+
+textarea:focus{
+    border-color:#36e0c0;
+}
+
+.modal-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.modal-buttons button{
+    flex:1;
+}
+
+.alert-preview{
+    padding:15px;
+    border-radius:12px;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    margin-bottom:15px;
+    color:#cbd5db;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.success{
+    color:#58e8cf;
+}
+
+.error{
+    color:#ff8d8d;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+    nav{
+        padding:0 5%;
+    }
+
+    .nav-buttons{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:60px 6%;
+    }
+
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-logo{
+        width:320px;
+        height:320px;
+    }
+
+    .hero-logo img{
+        width:230px;
+        height:230px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .alert-container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .alert-text{
+        max-width:100%;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+}
+
+@media(max-width:500px){
+
+    h1{
+        font-size:48px;
+    }
+
+    .hero-logo{
+        width:280px;
+        height:280px;
+    }
+
+    .hero-logo img{
+        width:200px;
+        height:200px;
+    }
+
+    .alert-container{
+        padding:25px;
+    }
+
+    .alert-card{
+        width:100%;
+    }
+
+    .modal-buttons{
+        flex-direction:column;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- NAVBAR -->
 
 <nav>
 
@@ -616,6 +695,10 @@
             Cómo funciona
         </button>
 
+        <button class="nav-btn" onclick="irA('alertas')">
+            Alertas
+        </button>
+
         <button class="nav-btn" onclick="irA('contacto')">
             Contacto
         </button>
@@ -625,7 +708,7 @@
 </nav>
 
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero" id="inicio">
 
@@ -666,7 +749,6 @@
 
     </div>
 
-
     <div class="hero-logo">
 
         <img src="logo-vigia.png" alt="Vigía">
@@ -676,7 +758,7 @@
 </section>
 
 
-<!-- ================= FUNCIONES ================= -->
+<!-- FUNCIONES -->
 
 <section class="features-section" id="funciones">
 
@@ -690,9 +772,7 @@
 
     </div>
 
-
     <div class="features">
-
 
         <div class="feature">
 
@@ -714,7 +794,6 @@
 
         </div>
 
-
         <div class="feature">
 
             <div class="icon">
@@ -729,12 +808,11 @@
             <h3>Ubicación</h3>
 
             <p>
-                Compartí tu ubicación para que tu contacto
-                pueda saber dónde te encontrás.
+                Compartí tu ubicación actual para que
+                tu contacto pueda saber dónde estás.
             </p>
 
         </div>
-
 
         <div class="feature">
 
@@ -750,8 +828,8 @@
             <h3>Contacto de confianza</h3>
 
             <p>
-                Configurá previamente a las personas
-                que recibirán tus alertas.
+                Configurá previamente a la persona
+                que recibirá tus alertas.
             </p>
 
         </div>
@@ -761,7 +839,7 @@
 </section>
 
 
-<!-- ================= ALERTAS ================= -->
+<!-- ALERTAS -->
 
 <section class="alert-section" id="alertas">
 
@@ -778,6 +856,33 @@
                 una opción y Vigía preparará el aviso para
                 tu contacto de confianza.
             </p>
+
+            <div class="location-panel">
+
+                <div class="location-title">
+                    Estado de ubicación
+                </div>
+
+                <div
+                    id="locationStatus"
+                    class="location-data">
+
+                    Todavía no se obtuvo tu ubicación.
+
+                </div>
+
+                <button
+                    class="secondary-btn"
+                    style="margin-top:12px;padding:10px 15px;"
+                    onclick="obtenerUbicacion()">
+
+                    Obtener mi ubicación
+
+                </button>
+
+                <div id="mapContainer"></div>
+
+            </div>
 
         </div>
 
@@ -813,6 +918,24 @@
 
             <button
                 class="alert-option"
+                onclick="enviarAlerta('Me están siguiendo')">
+
+                Me están siguiendo
+
+            </button>
+
+
+            <button
+                class="alert-option"
+                onclick="enviarAlerta('Me están robando')">
+
+                Me están robando
+
+            </button>
+
+
+            <button
+                class="alert-option"
                 onclick="enviarAlerta('Situación de riesgo')">
 
                 Situación de riesgo
@@ -835,19 +958,40 @@
 </section>
 
 
-<!-- ================= CONTACTO ================= -->
+<!-- CONTACTO -->
 
 <section class="contact-section" id="contacto">
 
     <div class="contact-box">
 
-        <h2>¿Querés conocer más?</h2>
+        <h2>Contacto de confianza</h2>
 
         <p>
-            Vigía es un proyecto pensado para utilizar
-            la tecnología como herramienta de comunicación,
-            prevención y acompañamiento.
+            Guardá el número de WhatsApp de la persona
+            que querés que reciba tus alertas.
         </p>
+
+        <div class="contact-form">
+
+            <input
+                type="tel"
+                id="telefono"
+                placeholder="+54 9 11 1234 5678">
+
+            <button
+                class="primary-btn"
+                onclick="guardarContacto()">
+
+                Guardar contacto
+
+            </button>
+
+            <p
+                id="contactoGuardado"
+                style="margin-top:15px;">
+            </p>
+
+        </div>
 
         <div class="contact-info">
             Proyecto Vigía · Pergamino
@@ -858,7 +1002,7 @@
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -873,13 +1017,64 @@
 </footer>
 
 
-<!-- ================= MODAL ================= -->
+<!-- MODAL DE ALERTA -->
 
-<div class="message-modal" id="messageModal">
+<div
+    class="message-modal"
+    id="alertModal">
 
     <div class="modal-box">
 
-        <h3>Mensaje personalizado</h3>
+        <h3 id="alertTitle">
+            Alerta
+        </h3>
+
+        <p>
+            Revisá la información antes de abrir WhatsApp.
+        </p>
+
+        <div
+            class="alert-preview"
+            id="alertPreview">
+        </div>
+
+        <div
+            class="modal-buttons">
+
+            <button
+                class="secondary-btn"
+                onclick="cerrarAlerta()">
+
+                Cancelar
+
+            </button>
+
+            <button
+                class="primary-btn"
+                onclick="enviarWhatsApp()">
+
+                Abrir WhatsApp
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MODAL MENSAJE PERSONALIZADO -->
+
+<div
+    class="message-modal"
+    id="messageModal">
+
+    <div class="modal-box">
+
+        <h3>
+            Mensaje personalizado
+        </h3>
 
         <p>
             Escribí el mensaje que querés enviar
@@ -896,13 +1091,17 @@
             <button
                 class="secondary-btn"
                 onclick="cerrarMensaje()">
+
                 Cancelar
+
             </button>
 
             <button
                 class="primary-btn"
                 onclick="enviarMensaje()">
-                Enviar alerta
+
+                Continuar
+
             </button>
 
         </div>
@@ -912,118 +1111,556 @@
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
-    /* IR A UNA SECCIÓN */
+/* =========================================
+   VARIABLES
+========================================= */
 
-    function irA(id) {
+let ubicacionActual = null;
+let tipoAlertaActual = "";
 
-        const elemento = document.getElementById(id);
 
-        if (elemento) {
+/* =========================================
+   NAVEGACION
+========================================= */
 
-            elemento.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+function irA(id){
 
-        }
+    const elemento = document.getElementById(id);
 
+    if(!elemento){
+        return;
     }
 
+    elemento.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+}
 
-    /* ALERTAS */
 
-    function enviarAlerta(tipo) {
+/* =========================================
+   CONTACTO
+========================================= */
 
-        alert(
-            "ALERTA PREPARADA\n\n" +
-            "Tipo: " + tipo +
-            "\n\n" +
-            "Ubicación: se obtendría desde el dispositivo." +
-            "\n\n" +
-            "Contacto de confianza: configurado."
-        );
+function guardarContacto(){
 
+    const telefono =
+        document.getElementById("telefono").value.trim();
+
+    if(telefono === ""){
+
+        alert("Escribí un número de WhatsApp.");
+
+        return;
     }
 
+    localStorage.setItem(
+        "vigiaContacto",
+        telefono
+    );
 
-    /* ABRIR MENSAJE */
+    mostrarContacto();
 
-    function abrirMensaje() {
-
-        document
-            .getElementById("messageModal")
-            .classList.add("active");
-
-        document
-            .getElementById("mensaje")
-            .focus();
-
-    }
+    alert(
+        "Contacto de confianza guardado correctamente."
+    );
+}
 
 
-    /* CERRAR MENSAJE */
+function mostrarContacto(){
 
-    function cerrarMensaje() {
+    const telefono =
+        localStorage.getItem("vigiaContacto");
 
-        document
-            .getElementById("messageModal")
-            .classList.remove("active");
+    const campo =
+        document.getElementById("telefono");
 
-    }
+    const mensaje =
+        document.getElementById("contactoGuardado");
 
+    if(telefono){
 
-    /* ENVIAR MENSAJE */
+        campo.value = telefono;
 
-    function enviarMensaje() {
+        mensaje.innerHTML =
+            '<span class="success">Contacto guardado: ' +
+            telefono +
+            '</span>';
 
-        const mensaje =
-            document.getElementById("mensaje").value.trim();
+    }else{
 
-
-        if (mensaje === "") {
-
-            alert("Escribí un mensaje antes de enviarlo.");
-
-            return;
-
-        }
-
-
-        alert(
-            "ALERTA PREPARADA\n\n" +
-            "Mensaje:\n" +
-            mensaje +
-            "\n\n" +
-            "Ubicación: se obtendría desde el dispositivo." +
-            "\n\n" +
-            "Contacto de confianza: configurado."
-        );
-
-
-        document.getElementById("mensaje").value = "";
-
-        cerrarMensaje();
+        mensaje.innerHTML =
+            "Todavía no hay un contacto guardado.";
 
     }
+}
 
 
-    /* CERRAR MODAL AL TOCAR AFUERA */
+/* =========================================
+   GPS / UBICACION REAL
+========================================= */
 
-    document
-        .getElementById("messageModal")
-        .addEventListener("click", function(event) {
+function obtenerUbicacion(){
 
-            if (event.target === this) {
+    const estado =
+        document.getElementById("locationStatus");
 
-                cerrarMensaje();
+    const mapa =
+        document.getElementById("mapContainer");
+
+    estado.innerHTML =
+        "Obteniendo ubicación...";
+
+    mapa.innerHTML = "";
+
+    if(!navigator.geolocation){
+
+        estado.innerHTML =
+            '<span class="error">' +
+            'Este navegador no permite obtener la ubicación.' +
+            '</span>';
+
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            ubicacionActual = {
+
+                latitude:
+                    position.coords.latitude,
+
+                longitude:
+                    position.coords.longitude,
+
+                accuracy:
+                    position.coords.accuracy
+
+            };
+
+            const lat =
+                ubicacionActual.latitude.toFixed(6);
+
+            const lon =
+                ubicacionActual.longitude.toFixed(6);
+
+            estado.innerHTML =
+                '<span class="success">' +
+                'Ubicación obtenida correctamente.' +
+                '</span><br><br>' +
+
+                'Latitud: ' +
+                lat +
+                '<br>' +
+
+                'Longitud: ' +
+                lon +
+                '<br>' +
+
+                'Precisión aproximada: ' +
+                Math.round(
+                    ubicacionActual.accuracy
+                ) +
+                ' metros';
+
+            const mapaURL =
+                "https://www.google.com/maps?q=" +
+                ubicacionActual.latitude +
+                "," +
+                ubicacionActual.longitude;
+
+            mapa.innerHTML =
+                '<a class="map-btn" ' +
+                'href="' + mapaURL + '" ' +
+                'target="_blank">' +
+                'Abrir mi ubicación en Google Maps' +
+                '</a>';
+
+        },
+
+        function(error){
+
+            let mensaje =
+                "No se pudo obtener la ubicación.";
+
+            if(error.code === 1){
+
+                mensaje =
+                    "Permiso de ubicación rechazado. " +
+                    "Permití el acceso a la ubicación " +
+                    "desde el navegador.";
 
             }
 
-        });
+            if(error.code === 2){
+
+                mensaje =
+                    "No se pudo determinar tu ubicación.";
+
+            }
+
+            if(error.code === 3){
+
+                mensaje =
+                    "La ubicación tardó demasiado en responder.";
+
+            }
+
+            estado.innerHTML =
+                '<span class="error">' +
+                mensaje +
+                '</span>';
+
+        },
+
+        {
+
+            enableHighAccuracy:true,
+
+            timeout:15000,
+
+            maximumAge:10000
+
+        }
+
+    );
+}
+
+
+/* =========================================
+   PREPARAR ALERTA
+========================================= */
+
+function enviarAlerta(tipo){
+
+    tipoAlertaActual = tipo;
+
+    const modal =
+        document.getElementById("alertModal");
+
+    const titulo =
+        document.getElementById("alertTitle");
+
+    const preview =
+        document.getElementById("alertPreview");
+
+    titulo.textContent =
+        tipo;
+
+    let texto =
+        "<strong>Tipo de alerta:</strong><br>" +
+        tipo +
+        "<br><br>";
+
+    if(ubicacionActual){
+
+        texto +=
+            "<strong>Ubicación:</strong><br>" +
+            ubicacionActual.latitude.toFixed(6) +
+            ", " +
+            ubicacionActual.longitude.toFixed(6) +
+            "<br><br>" +
+
+            "La ubicación se agregará al mensaje.";
+
+    }else{
+
+        texto +=
+            "<strong>Ubicación:</strong><br>" +
+            "Todavía no se obtuvo la ubicación.<br><br>" +
+
+            "Vigía intentará obtenerla ahora.";
+
+        obtenerUbicacion();
+
+    }
+
+    const contacto =
+        localStorage.getItem("vigiaContacto");
+
+    texto +=
+        "<br><br><strong>Contacto:</strong><br>" +
+        (
+            contacto
+            ?
+            contacto
+            :
+            "No configurado"
+        );
+
+    preview.innerHTML = texto;
+
+    modal.classList.add("active");
+}
+
+
+/* =========================================
+   CERRAR ALERTA
+========================================= */
+
+function cerrarAlerta(){
+
+    document
+        .getElementById("alertModal")
+        .classList.remove("active");
+
+}
+
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
+function enviarWhatsApp(){
+
+    const telefono =
+        localStorage.getItem("vigiaContacto");
+
+    if(!telefono){
+
+        cerrarAlerta();
+
+        alert(
+            "Primero tenés que configurar " +
+            "un contacto de confianza."
+        );
+
+        irA("contacto");
+
+        return;
+    }
+
+    let numero =
+        telefono.replace(/\D/g,"");
+
+    if(numero.length < 8){
+
+        alert(
+            "El número de WhatsApp no parece válido."
+        );
+
+        return;
+    }
+
+    let mensaje =
+        "VIGÍA - ALERTA\n\n" +
+
+        "Situación: " +
+        tipoAlertaActual +
+        "\n";
+
+    if(ubicacionActual){
+
+        const lat =
+            ubicacionActual.latitude;
+
+        const lon =
+            ubicacionActual.longitude;
+
+        const mapa =
+            "https://www.google.com/maps?q=" +
+            lat +
+            "," +
+            lon;
+
+        mensaje +=
+            "\nMi ubicación actual:\n" +
+            mapa;
+
+    }else{
+
+        mensaje +=
+            "\nNo se pudo obtener mi ubicación.";
+
+    }
+
+    mensaje +=
+        "\n\nEste mensaje fue preparado desde Vigía.";
+
+    const url =
+        "https://wa.me/" +
+        numero +
+        "?text=" +
+        encodeURIComponent(mensaje);
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+    cerrarAlerta();
+}
+
+
+/* =========================================
+   MENSAJE PERSONALIZADO
+========================================= */
+
+function abrirMensaje(){
+
+    document
+        .getElementById("messageModal")
+        .classList.add("active");
+
+    document
+        .getElementById("mensaje")
+        .focus();
+
+}
+
+
+/* =========================================
+   CERRAR MENSAJE
+========================================= */
+
+function cerrarMensaje(){
+
+    document
+        .getElementById("messageModal")
+        .classList.remove("active");
+
+}
+
+
+/* =========================================
+   ENVIAR MENSAJE PERSONALIZADO
+========================================= */
+
+function enviarMensaje(){
+
+    const mensaje =
+        document
+        .getElementById("mensaje")
+        .value
+        .trim();
+
+    if(mensaje === ""){
+
+        alert(
+            "Escribí un mensaje antes de continuar."
+        );
+
+        return;
+    }
+
+    const telefono =
+        localStorage.getItem("vigiaContacto");
+
+    if(!telefono){
+
+        alert(
+            "Primero tenés que configurar " +
+            "un contacto de confianza."
+        );
+
+        cerrarMensaje();
+
+        irA("contacto");
+
+        return;
+    }
+
+    let numero =
+        telefono.replace(/\D/g,"");
+
+    let mensajeFinal =
+        "VIGÍA - ALERTA\n\n" +
+
+        mensaje;
+
+    if(ubicacionActual){
+
+        const mapa =
+            "https://www.google.com/maps?q=" +
+            ubicacionActual.latitude +
+            "," +
+            ubicacionActual.longitude;
+
+        mensajeFinal +=
+            "\n\nMi ubicación actual:\n" +
+            mapa;
+
+    }else{
+
+        mensajeFinal +=
+            "\n\nNo se pudo obtener mi ubicación.";
+
+    }
+
+    mensajeFinal +=
+        "\n\nEste mensaje fue preparado desde Vigía.";
+
+    const url =
+        "https://wa.me/" +
+        numero +
+        "?text=" +
+        encodeURIComponent(mensajeFinal);
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+    document
+        .getElementById("mensaje")
+        .value = "";
+
+    cerrarMensaje();
+}
+
+
+/* =========================================
+   CERRAR MODALES TOCANDO AFUERA
+========================================= */
+
+document
+.getElementById("alertModal")
+.addEventListener(
+    "click",
+    function(event){
+
+        if(event.target === this){
+
+            cerrarAlerta();
+
+        }
+
+    }
+);
+
+
+document
+.getElementById("messageModal")
+.addEventListener(
+    "click",
+    function(event){
+
+        if(event.target === this){
+
+            cerrarMensaje();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   INICIO
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        mostrarContacto();
+
+    }
+);
 
 </script>
 
