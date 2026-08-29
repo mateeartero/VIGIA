@@ -1,2235 +1,714 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Ruta Segura</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-:root{
-    --blue:#2367e8;
-    --blue-dark:#1748ad;
-    --red:#e63950;
-    --green:#19a463;
-    --orange:#f59e0b;
-    --background:#f5f7fb;
-    --text:#172033;
-    --gray:#70798a;
-    --border:#e5e8ee;
-}
-
-body{
-    background:var(--background);
-    color:var(--text);
-}
-
-/* =========================
-   LOGIN
-========================= */
-
-.login-screen{
-    position:fixed;
-    inset:0;
-    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    z-index:1000;
-}
-
-.login-box{
-    width:100%;
-    max-width:400px;
-    background:white;
-    border-radius:28px;
-    padding:35px 25px;
-    box-shadow:0 20px 50px rgba(0,0,0,.22);
-}
-
-.login-logo{
-    width:75px;
-    height:75px;
-    border-radius:22px;
-    margin:0 auto 20px;
-    background:#edf3ff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:35px;
-}
-
-.login-box h1{
-    text-align:center;
-    font-size:29px;
-    margin-bottom:7px;
-}
-
-.login-box p{
-    text-align:center;
-    color:var(--gray);
-    font-size:14px;
-    margin-bottom:25px;
-}
-
-.input{
-    width:100%;
-    padding:14px;
-    border:1px solid var(--border);
-    border-radius:13px;
-    outline:none;
-    font-size:14px;
-    margin-bottom:12px;
-}
-
-.input:focus{
-    border-color:var(--blue);
-}
-
-.primary-button{
-    width:100%;
-    border:none;
-    padding:14px;
-    border-radius:13px;
-    background:var(--blue);
-    color:white;
-    font-weight:bold;
-    font-size:15px;
-    cursor:pointer;
-}
-
-/* =========================
-   APP
-========================= */
-
-.app{
-    width:100%;
-    max-width:480px;
-    min-height:100vh;
-    margin:auto;
-    background:white;
-    position:relative;
-    overflow:hidden;
-}
-
-.hidden{
-    display:none !important;
-}
-
-/* =========================
-   HEADER
-========================= */
-
-.header{
-    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
-    color:white;
-    padding:22px 20px 25px;
-    border-radius:0 0 28px 28px;
-}
-
-.header-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:11px;
-}
-
-.logo{
-    width:44px;
-    height:44px;
-    border-radius:14px;
-    background:rgba(255,255,255,.18);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:22px;
-}
-
-.brand h1{
-    font-size:19px;
-}
-
-.brand p{
-    font-size:11px;
-    opacity:.8;
-    margin-top:3px;
-}
-
-.profile{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    border:none;
-    background:rgba(255,255,255,.18);
-    color:white;
-    cursor:pointer;
-}
-
-.header-title{
-    margin-top:25px;
-}
-
-.header-title h2{
-    font-size:25px;
-    margin-bottom:6px;
-}
-
-.header-title p{
-    font-size:13px;
-    opacity:.9;
-}
-
-/* =========================
-   PAGE
-========================= */
-
-.page{
-    min-height:100vh;
-    padding-bottom:100px;
-}
-
-.content{
-    padding:20px;
-}
-
-/* =========================
-   INICIO
-========================= */
-
-.status-card{
-    background:#ecfdf5;
-    border:1px solid #cceede;
-    border-radius:20px;
-    padding:18px;
-    display:flex;
-    gap:13px;
-    align-items:center;
-    margin-bottom:18px;
-}
-
-.status-icon{
-    width:45px;
-    height:45px;
-    border-radius:14px;
-    background:#d9f7e8;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:20px;
-}
-
-.status-card strong{
-    display:block;
-    font-size:15px;
-    margin-bottom:4px;
-}
-
-.status-card span{
-    color:#557064;
-    font-size:12px;
-}
-
-.contact-card{
-    border:1px solid var(--border);
-    border-radius:21px;
-    padding:20px;
-}
-
-.contact-title{
-    font-size:18px;
-    font-weight:bold;
-    margin-bottom:6px;
-}
-
-.contact-subtitle{
-    font-size:12px;
-    color:var(--gray);
-    margin-bottom:17px;
-}
-
-.contact-person{
-    display:flex;
-    align-items:center;
-    gap:13px;
-    margin-bottom:15px;
-}
-
-.avatar{
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    background:#edf3ff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:22px;
-}
-
-.contact-person strong{
-    display:block;
-    font-size:15px;
-    margin-bottom:4px;
-}
-
-.contact-person span{
-    color:var(--gray);
-    font-size:12px;
-}
-
-.secondary-button{
-    width:100%;
-    border:1px solid var(--border);
-    background:#f8fafc;
-    padding:12px;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-/* =========================
-   UBICACION
-========================= */
-
-.map{
-    height:320px;
-    border-radius:22px;
-    background:
-        linear-gradient(rgba(190,202,220,.45) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(190,202,220,.45) 1px,transparent 1px);
-    background-size:30px 30px;
-    background-color:#eef2f7;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:16px;
-    position:relative;
-}
-
-.map-center{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    background:rgba(35,103,232,.14);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.map-pin{
-    width:25px;
-    height:25px;
-    background:var(--blue);
-    border-radius:50% 50% 50% 0;
-    transform:rotate(-45deg);
-}
-
-.gps-info{
-    background:#f8fafc;
-    border-radius:17px;
-    padding:15px;
-    margin-bottom:15px;
-}
-
-.row{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:9px;
-}
-
-.row:last-child{
-    margin-bottom:0;
-}
-
-.row span:first-child{
-    color:var(--gray);
-    font-size:12px;
-}
-
-.row span:last-child{
-    font-weight:bold;
-    font-size:12px;
-}
-
-.destination-title{
-    font-size:17px;
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-.destination-text{
-    color:var(--gray);
-    font-size:12px;
-    margin-bottom:12px;
-}
-
-/* =========================
-   MENSAJES
-========================= */
-
-.message-intro{
-    background:#edf4ff;
-    border:1px solid #d9e6ff;
-    border-radius:18px;
-    padding:16px;
-    margin-bottom:17px;
-}
-
-.message-intro strong{
-    display:block;
-    font-size:14px;
-    margin-bottom:5px;
-}
-
-.message-intro span{
-    color:var(--gray);
-    font-size:12px;
-    line-height:1.5;
-}
-
-.message-list{
-    display:grid;
-    gap:12px;
-}
-
-.message-button{
-    border:1px solid var(--border);
-    background:white;
-    border-radius:19px;
-    padding:17px;
-    display:flex;
-    align-items:center;
-    gap:13px;
-    text-align:left;
-    cursor:pointer;
-}
-
-.message-icon{
-    width:48px;
-    height:48px;
-    background:#edf7ff;
-    border-radius:14px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:21px;
-}
-
-.message-button strong{
-    display:block;
-    font-size:14px;
-    margin-bottom:4px;
-}
-
-.message-button span{
-    color:var(--gray);
-    font-size:11px;
-}
-
-/* =========================
-   ALERTAS
-========================= */
-
-.alert-intro{
-    background:#fff2f4;
-    border:1px solid #ffd6dc;
-    border-radius:18px;
-    padding:16px;
-    margin-bottom:17px;
-}
-
-.alert-intro strong{
-    display:block;
-    color:#b5223b;
-    font-size:14px;
-    margin-bottom:5px;
-}
-
-.alert-intro span{
-    color:#75545b;
-    font-size:12px;
-    line-height:1.5;
-}
-
-.alert-list{
-    display:grid;
-    gap:12px;
-}
-
-.alert-button{
-    border:1px solid var(--border);
-    background:white;
-    border-radius:19px;
-    padding:17px;
-    display:flex;
-    align-items:center;
-    gap:13px;
-    text-align:left;
-    cursor:pointer;
-}
-
-.alert-icon{
-    width:49px;
-    height:49px;
-    background:#fff0f2;
-    border-radius:15px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:22px;
-}
-
-.alert-button strong{
-    display:block;
-    font-size:14px;
-    margin-bottom:4px;
-}
-
-.alert-button span{
-    color:var(--gray);
-    font-size:11px;
-}
-
-/* =========================
-   AJUSTES
-========================= */
-
-.setting-card{
-    border:1px solid var(--border);
-    border-radius:19px;
-    padding:17px;
-    margin-bottom:12px;
-}
-
-.setting-card strong{
-    display:block;
-    font-size:15px;
-    margin-bottom:5px;
-}
-
-.setting-card span{
-    display:block;
-    color:var(--gray);
-    font-size:12px;
-    margin-bottom:13px;
-}
-
-.setting-button{
-    border:none;
-    background:#eef3ff;
-    color:var(--blue);
-    padding:11px;
-    border-radius:11px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* =========================
-   MODAL
-========================= */
-
-.modal-background{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.45);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    z-index:2000;
-}
-
-.modal{
-    width:100%;
-    max-width:410px;
-    background:white;
-    border-radius:24px;
-    padding:23px;
-}
-
-.modal h3{
-    font-size:19px;
-    margin-bottom:8px;
-}
-
-.modal p{
-    color:var(--gray);
-    font-size:13px;
-    line-height:1.5;
-    margin-bottom:18px;
-}
-
-.modal-buttons{
-    display:grid;
-    gap:9px;
-}
-
-.danger{
-    border:none;
-    background:var(--red);
-    color:white;
-    padding:13px;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.cancel{
-    border:none;
-    background:#eef1f5;
-    padding:13px;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* =========================
-   BARRA INFERIOR
-========================= */
-
-.bottom-nav{
-    position:fixed;
-    bottom:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:100%;
-    max-width:480px;
-    height:80px;
-    background:rgba(255,255,255,.97);
-    backdrop-filter:blur(12px);
-    border-top:1px solid var(--border);
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    z-index:900;
-}
-
-.nav-button{
-    border:none;
-    background:none;
-    color:#8992a2;
-    cursor:pointer;
-    font-size:10px;
-    font-weight:bold;
-}
-
-.nav-button span{
-    display:block;
-    font-size:21px;
-    margin-bottom:4px;
-}
-
-.nav-button.active{
-    color:var(--blue);
-}
-
-@media(min-width:700px){
-
-    body{
-        padding:25px 0;
-    }
-
-    .app{
-        min-height:calc(100vh - 50px);
-        border-radius:28px;
-        box-shadow:0 10px 40px rgba(0,0,0,.08);
-    }
-
-    .bottom-nav{
-        bottom:25px;
-        border-radius:0 0 28px 28px;
-    }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vigía | Seguridad cerca tuyo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 15% 20%, rgba(30, 220, 190, 0.10), transparent 28%),
+                radial-gradient(circle at 85% 80%, rgba(0, 150, 255, 0.10), transparent 30%),
+                #050912;
+            color: #f4f8fb;
+            min-height: 100vh;
+        }
+
+        /* ---------------- NAVBAR ---------------- */
+
+        nav {
+            width: 100%;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            background: rgba(5, 9, 18, 0.80);
+            border-bottom: 1px solid rgba(100, 255, 225, 0.08);
+            backdrop-filter: blur(14px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-name span {
+            color: #36e0c0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            color: #dce8ed;
+            border: 1px solid rgba(255,255,255,0.10);
+            padding: 10px 17px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .nav-btn:hover {
+            border-color: #36e0c0;
+            color: #36e0c0;
+        }
+
+        /* ---------------- HERO ---------------- */
+
+        .hero {
+            min-height: calc(100vh - 75px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 9%;
+            gap: 70px;
+        }
+
+        .hero-text {
+            max-width: 620px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(54, 224, 192, 0.25);
+            background: rgba(54, 224, 192, 0.07);
+            color: #58e8cf;
+            padding: 8px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .tag-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #36e0c0;
+            box-shadow: 0 0 12px #36e0c0;
+        }
+
+        h1 {
+            font-size: clamp(45px, 6vw, 76px);
+            line-height: 0.98;
+            margin-bottom: 25px;
+            letter-spacing: -3px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #43e3c4, #2da9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            color: #9baab5;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 560px;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            border: none;
+            padding: 15px 25px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #35dfc0, #198dff);
+            color: #031018;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: 0 10px 35px rgba(39, 210, 190, 0.18);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(39, 210, 190, 0.28);
+        }
+
+        .secondary-btn {
+            border: 1px solid rgba(255,255,255,0.13);
+            background: rgba(255,255,255,0.03);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .secondary-btn:hover {
+            border-color: #36e0c0;
+            color: #36e0c0;
+        }
+
+        /* ---------------- LOGO DISPLAY ---------------- */
+
+        .hero-logo {
+            width: 410px;
+            height: 410px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            background:
+                radial-gradient(circle at center,
+                    rgba(54,224,192,0.13),
+                    rgba(15,24,37,0.35) 45%,
+                    rgba(5,9,18,0.75) 75%);
+
+            border: 1px solid rgba(73, 234, 210, 0.13);
+
+            box-shadow:
+                0 0 80px rgba(28, 214, 190, 0.08),
+                inset 0 0 60px rgba(30, 120, 180, 0.05);
+        }
+
+        .hero-logo::before {
+            content: "";
+            position: absolute;
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            border: 1px solid rgba(54,224,192,0.12);
+        }
+
+        .hero-logo img {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 0 25px rgba(50,220,200,0.16));
+        }
+
+        /* ---------------- FEATURES ---------------- */
+
+        .features-section {
+            padding: 90px 9%;
+            background: rgba(255,255,255,0.015);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #84949e;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .feature {
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            border-color: rgba(54,224,192,0.25);
+            background: rgba(54,224,192,0.035);
+        }
+
+        .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background: rgba(54,224,192,0.08);
+            border: 1px solid rgba(54,224,192,0.15);
+        }
+
+        .icon svg {
+            width: 25px;
+            height: 25px;
+            stroke: #42dfc2;
+            fill: none;
+            stroke-width: 1.8;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #82919b;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ---------------- ALERT SECTION ---------------- */
+
+        .alert-section {
+            padding: 100px 9%;
+        }
+
+        .alert-container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 45px;
+            border-radius: 28px;
+            background:
+                radial-gradient(circle at top right,
+                rgba(39,150,255,0.08),
+                transparent 40%),
+                rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .alert-text {
+            max-width: 500px;
+        }
+
+        .alert-text h2 {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .alert-text p {
+            color: #8d9ba5;
+            line-height: 1.6;
+        }
+
+        .alert-card {
+            width: 300px;
+            padding: 25px;
+            border-radius: 20px;
+            background: #090f19;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+
+        .alert-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #58e8cf;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #36e0c0;
+            box-shadow: 0 0 12px #36e0c0;
+        }
+
+        .alert-option {
+            width: 100%;
+            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(255,255,255,0.025);
+            color: white;
+            padding: 13px;
+            margin-top: 9px;
+            border-radius: 10px;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .alert-option:hover {
+            border-color: #36e0c0;
+            background: rgba(54,224,192,0.06);
+        }
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+            padding: 35px 9%;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #66757f;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #36e0c0;
+        }
+
+        /* ---------------- RESPONSIVE ---------------- */
+
+        @media (max-width: 850px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-buttons {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 6%;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-logo {
+                width: 320px;
+                height: 320px;
+            }
+
+            .hero-logo img {
+                width: 230px;
+                height: 230px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .alert-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .alert-text {
+                max-width: 100%;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            h1 {
+                font-size: 48px;
+            }
+
+            .hero-logo {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero-logo img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .alert-container {
+                padding: 25px;
+            }
+
+            .alert-card {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <!-- NAVBAR -->
 
-<!-- =========================
-     LOGIN
-========================= -->
+    <nav>
 
-<div
-    id="loginScreen"
-    class="login-screen"
->
+        <div class="brand">
 
-    <div class="login-box">
+            <img src="logo-vigia.png" alt="Logo Vigía">
 
-        <div class="login-logo">
-            🛡️
-        </div>
-
-        <h1>Ruta Segura</h1>
-
-        <p>
-            Tu seguridad, siempre cerca.
-        </p>
-
-        <input
-            id="userName"
-            class="input"
-            type="text"
-            placeholder="¿Cómo te llamás?"
-        >
-
-        <button
-            class="primary-button"
-            onclick="enterApp()"
-        >
-            Continuar
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     APP
-========================= -->
-
-<div
-    id="app"
-    class="app hidden"
->
-
-
-<!-- =========================
-     INICIO
-========================= -->
-
-<section
-    id="home"
-    class="page"
->
-
-    <header class="header">
-
-        <div class="header-top">
-
-            <div class="brand">
-
-                <div class="logo">
-                    🛡️
-                </div>
-
-                <div>
-
-                    <h1>Ruta Segura</h1>
-
-                    <p>
-                        Tu seguridad, siempre cerca
-                    </p>
-
-                </div>
-
+            <div class="brand-name">
+                VI<span>GÍA</span>
             </div>
 
-            <button class="profile">
-                👤
-            </button>
-
         </div>
 
+        <div class="nav-buttons">
+            <button class="nav-btn">Inicio</button>
+            <button class="nav-btn">Cómo funciona</button>
+            <button class="nav-btn">Contacto</button>
+        </div>
 
-        <div class="header-title">
+    </nav>
 
-            <h2 id="welcome">
-                Hola 👋
-            </h2>
 
-            <p>
-                ¿Todo bien? Estamos para ayudarte.
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <div class="tag">
+                <span class="tag-dot"></span>
+                Seguridad inteligente
+            </div>
+
+            <h1>
+                Siempre cerca.
+                <br>
+                <span>Cuando importa.</span>
+            </h1>
+
+            <p class="hero-description">
+                Vigía es una plataforma de seguridad que permite
+                comunicar rápidamente una situación de riesgo
+                y compartir tu ubicación con personas de confianza.
             </p>
 
-        </div>
+            <div class="hero-buttons">
 
-    </header>
+                <button class="primary-btn">
+                    Comenzar ahora
+                </button>
 
-
-    <div class="content">
-
-        <div class="status-card">
-
-            <div class="status-icon">
-                ✅
-            </div>
-
-            <div>
-
-                <strong>
-                    No tenés alertas activas
-                </strong>
-
-                <span>
-                    Tu estado actual es seguro.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="contact-card">
-
-            <div class="contact-title">
-                Contacto de confianza
-            </div>
-
-            <div class="contact-subtitle">
-                Esta persona recibirá tus mensajes y alertas.
-            </div>
-
-
-            <div class="contact-person">
-
-                <div class="avatar">
-                    👤
-                </div>
-
-                <div>
-
-                    <strong id="contactNameDisplay">
-                        Sin configurar
-                    </strong>
-
-                    <span id="contactPhoneDisplay">
-                        Todavía no agregaste un contacto.
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div id="contactForm" class="hidden">
-
-                <input
-                    id="contactName"
-                    class="input"
-                    placeholder="Nombre del contacto"
-                >
-
-                <input
-                    id="contactPhone"
-                    class="input"
-                    type="tel"
-                    placeholder="Número de WhatsApp"
-                >
-
-                <button
-                    class="primary-button"
-                    onclick="saveContact()"
-                >
-                    Guardar contacto
+                <button class="secondary-btn">
+                    Conocer Vigía
                 </button>
 
             </div>
 
+        </div>
 
-            <button
-                id="editContactButton"
-                class="secondary-button"
-                onclick="toggleContactForm()"
-            >
-                Agregar / editar contacto
-            </button>
+
+        <div class="hero-logo">
+
+            <img src="logo-vigia.png" alt="Vigía">
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =========================
-     UBICACIÓN
-========================= -->
+    <!-- FEATURES -->
 
-<section
-    id="location"
-    class="page hidden"
->
+    <section class="features-section">
 
-    <header class="header">
+        <div class="section-title">
 
-        <div class="brand">
+            <h2>Tu seguridad, más simple.</h2>
 
-            <div class="logo">
-                🛡️
-            </div>
+            <p>
+                Herramientas pensadas para actuar rápidamente.
+            </p>
 
-            <div>
+        </div>
 
-                <h1>Ruta Segura</h1>
+
+        <div class="features">
+
+
+            <!-- ALERTA -->
+
+            <div class="feature">
+
+                <div class="icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                        <path d="M10 21h4"></path>
+                    </svg>
+
+                </div>
+
+                <h3>Alertas rápidas</h3>
 
                 <p>
-                    Ubicación
+                    Elegí rápidamente el tipo de situación
+                    y enviá una alerta a tu contacto de confianza.
+                </p>
+
+            </div>
+
+
+            <!-- UBICACION -->
+
+            <div class="feature">
+
+                <div class="icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"></path>
+                        <circle cx="12" cy="9" r="2.5"></circle>
+                    </svg>
+
+                </div>
+
+                <h3>Ubicación</h3>
+
+                <p>
+                    Compartí tu ubicación para que tu contacto
+                    pueda saber dónde te encontrás.
+                </p>
+
+            </div>
+
+
+            <!-- CONTACTO -->
+
+            <div class="feature">
+
+                <div class="icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"></path>
+                    </svg>
+
+                </div>
+
+                <h3>Contacto de confianza</h3>
+
+                <p>
+                    Configurá previamente a las personas
+                    que recibirán tus alertas.
                 </p>
 
             </div>
 
         </div>
 
-
-        <div class="header-title">
-
-            <h2>Mi ubicación</h2>
-
-            <p>
-                Consultá tu ubicación y elegí tu destino.
-            </p>
-
-        </div>
-
-    </header>
+    </section>
 
 
-    <div class="content">
+    <!-- ALERT DEMO -->
 
+    <section class="alert-section">
 
-        <div class="map">
+        <div class="alert-container">
 
-            <div class="map-center">
-                <div class="map-pin"></div>
-            </div>
+            <div class="alert-text">
 
-        </div>
-
-
-        <div class="gps-info">
-
-            <div class="row">
-
-                <span>
-                    Estado GPS
-                </span>
-
-                <span id="gpsStatus">
-                    Esperando...
-                </span>
-
-            </div>
-
-
-            <div class="row">
-
-                <span>
-                    Latitud
-                </span>
-
-                <span id="latitude">
-                    —
-                </span>
-
-            </div>
-
-
-            <div class="row">
-
-                <span>
-                    Longitud
-                </span>
-
-                <span id="longitude">
-                    —
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="primary-button"
-            onclick="getLocation()"
-        >
-            📍 Actualizar ubicación
-        </button>
-
-
-        <br><br>
-
-
-        <div class="destination-title">
-            Elegir destino
-        </div>
-
-        <div class="destination-text">
-            Escribí a dónde vas para preparar tu ruta.
-        </div>
-
-
-        <input
-            id="destination"
-            class="input"
-            type="text"
-            placeholder="Ej.: Plaza 25 de Mayo"
-        >
-
-
-        <button
-            class="secondary-button"
-            onclick="openDestination()"
-        >
-            🗺️ Ver destino en Google Maps
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     MENSAJES
-========================= -->
-
-<section
-    id="messages"
-    class="page hidden"
->
-
-    <header class="header">
-
-        <div class="brand">
-
-            <div class="logo">
-                🛡️
-            </div>
-
-            <div>
-
-                <h1>Ruta Segura</h1>
+                <h2>
+                    Una acción puede comunicarlo todo.
+                </h2>
 
                 <p>
-                    Mensajes
+                    Ante una situación de riesgo, Vigía busca
+                    reducir los pasos necesarios para pedir ayuda
+                    y comunicar tu ubicación.
                 </p>
 
             </div>
 
-        </div>
 
+            <div class="alert-card">
 
-        <div class="header-title">
+                <div class="alert-status">
 
-            <h2>Mensajes</h2>
+                    <span class="status-dot"></span>
 
-            <p>
-                Avisale a tu contacto que estás bien.
-            </p>
-
-        </div>
-
-    </header>
-
-
-    <div class="content">
-
-        <div class="message-intro">
-
-            <strong>
-                💬 Mensajes de tranquilidad
-            </strong>
-
-            <span>
-                Usalos para informar rápidamente cómo estás
-                o avisar sobre algún cambio en tu recorrido.
-            </span>
-
-        </div>
-
-
-        <div class="message-list">
-
-
-            <button
-                class="message-button"
-                onclick="sendNormalMessage('Estoy bien')"
-            >
-
-                <div class="message-icon">
-                    ✅
-                </div>
-
-                <div>
-
-                    <strong>
-                        Estoy bien
-                    </strong>
-
-                    <span>
-                        Avisar que estás bien.
-                    </span>
+                    Vigía listo
 
                 </div>
 
-            </button>
 
+                <button class="alert-option">
+                    Necesito ayuda
+                </button>
 
-            <button
-                class="message-button"
-                onclick="sendNormalMessage('Estoy seguro/a')"
-            >
+                <button class="alert-option">
+                    No me siento seguro/a
+                </button>
 
-                <div class="message-icon">
-                    🛡️
-                </div>
+                <button class="alert-option">
+                    Situación de riesgo
+                </button>
 
-                <div>
-
-                    <strong>
-                        Estoy seguro/a
-                    </strong>
-
-                    <span>
-                        Avisar que estás seguro/a.
-                    </span>
-
-                </div>
-
-            </button>
-
-
-            <button
-                class="message-button"
-                onclick="sendNormalMessage('Tomé otro camino')"
-            >
-
-                <div class="message-icon">
-                    🔄
-                </div>
-
-                <div>
-
-                    <strong>
-                        Tomé otro camino
-                    </strong>
-
-                    <span>
-                        Avisar que cambiaste de recorrido.
-                    </span>
-
-                </div>
-
-            </button>
-
-
-            <button
-                class="message-button"
-                onclick="sendNormalMessage('Voy a tardar más')"
-            >
-
-                <div class="message-icon">
-                    ⏰
-                </div>
-
-                <div>
-
-                    <strong>
-                        Voy a tardar más
-                    </strong>
-
-                    <span>
-                        Avisar que llegarás más tarde.
-                    </span>
-
-                </div>
-
-            </button>
-
-
-            <button
-                class="message-button"
-                onclick="sendNormalMessage('Llegué')"
-            >
-
-                <div class="message-icon">
-                    🏠
-                </div>
-
-                <div>
-
-                    <strong>
-                        Llegué
-                    </strong>
-
-                    <span>
-                        Avisar que llegaste a destino.
-                    </span>
-
-                </div>
-
-            </button>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     ALERTAS
-========================= -->
-
-<section
-    id="alerts"
-    class="page hidden"
->
-
-    <header
-        class="header"
-        style="background:linear-gradient(135deg,#e63950,#b92139)"
-    >
-
-        <div class="brand">
-
-            <div class="logo">
-                🚨
-            </div>
-
-            <div>
-
-                <h1>Ruta Segura</h1>
-
-                <p>
-                    Alertas
-                </p>
+                <button class="alert-option">
+                    Enviar mensaje personalizado
+                </button>
 
             </div>
 
         </div>
 
+    </section>
 
-        <div class="header-title">
 
-            <h2>Necesito ayuda</h2>
+    <!-- FOOTER -->
 
-            <p>
-                Elegí rápidamente qué está pasando.
-            </p>
+    <footer>
 
+        <div>
+            © 2026 <strong>Vigía</strong>
         </div>
 
-    </header>
-
-
-    <div class="content">
-
-        <div class="alert-intro">
-
-            <strong>
-                🚨 Alertas de emergencia
-            </strong>
-
-            <span>
-                Seleccioná la situación correspondiente.
-                Se preparará un mensaje para tu contacto
-                de confianza con tu ubicación.
-            </span>
-
+        <div>
+            Seguridad. Tecnología. Confianza.
         </div>
 
+    </footer>
 
-        <div class="alert-list">
-
-
-            <button
-                class="alert-button"
-                onclick="openAlert('Me están robando')"
-            >
-
-                <div class="alert-icon">
-                    🚨
-                </div>
-
-                <div>
-
-                    <strong>
-                        Me están robando
-                    </strong>
-
-                    <span>
-                        Solicitar ayuda inmediatamente.
-                    </span>
-
-                </div>
-
-            </button>
-
-
-            <button
-                class="alert-button"
-                onclick="openAlert('Estoy en peligro')"
-            >
-
-                <div class="alert-icon">
-                    ⚠️
-                </div>
-
-                <div>
-
-                    <strong>
-                        Estoy en peligro
-                    </strong>
-
-                    <span>
-                        Avisar que estás en una situación peligrosa.
-                    </span>
-
-                </div>
-
-            </button>
-
-
-            <button
-                class="alert-button"
-                onclick="openAlert('Necesito ayuda')"
-            >
-
-                <div class="alert-icon">
-                    🆘
-                </div>
-
-                <div>
-
-                    <strong>
-                        Necesito ayuda
-                    </strong>
-
-                    <span>
-                        Enviar una alerta rápida.
-                    </span>
-
-                </div>
-
-            </button>
-
-
-            <button
-                class="alert-button"
-                onclick="openAlert('Tuve un accidente')"
-            >
-
-                <div class="alert-icon">
-                    🚑
-                </div>
-
-                <div>
-
-                    <strong>
-                        Tuve un accidente
-                    </strong>
-
-                    <span>
-                        Avisar sobre un accidente.
-                    </span>
-
-                </div>
-
-            </button>
-
-
-            <button
-                class="alert-button"
-                onclick="openAlert('No me siento segura')"
-            >
-
-                <div class="alert-icon">
-                    🔴
-                </div>
-
-                <div>
-
-                    <strong>
-                        No me siento segura
-                    </strong>
-
-                    <span>
-                        Avisar que necesitás acompañamiento.
-                    </span>
-
-                </div>
-
-            </button>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     AJUSTES
-========================= -->
-
-<section
-    id="settings"
-    class="page hidden"
->
-
-    <header class="header">
-
-        <div class="brand">
-
-            <div class="logo">
-                🛡️
-            </div>
-
-            <div>
-
-                <h1>Ruta Segura</h1>
-
-                <p>
-                    Configuración
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="header-title">
-
-            <h2>Ajustes</h2>
-
-            <p>
-                Configurá tu experiencia.
-            </p>
-
-        </div>
-
-    </header>
-
-
-    <div class="content">
-
-
-        <div class="setting-card">
-
-            <strong>
-                👤 Mi nombre
-            </strong>
-
-            <span id="settingUserName">
-                —
-            </span>
-
-            <button
-                class="setting-button"
-                onclick="changeName()"
-            >
-                Cambiar nombre
-            </button>
-
-        </div>
-
-
-        <div class="setting-card">
-
-            <strong>
-                📱 Contacto de confianza
-            </strong>
-
-            <span id="settingContact">
-                No configurado
-            </span>
-
-            <button
-                class="setting-button"
-                onclick="goToContact()"
-            >
-                Configurar contacto
-            </button>
-
-        </div>
-
-
-        <div class="setting-card">
-
-            <strong>
-                📍 Permiso de ubicación
-            </strong>
-
-            <span>
-                Ruta Segura necesita acceso al GPS
-                para obtener tu ubicación.
-            </span>
-
-            <button
-                class="setting-button"
-                onclick="getLocation()"
-            >
-                Probar ubicación
-            </button>
-
-        </div>
-
-
-        <div class="setting-card">
-
-            <strong>
-                ℹ️ Sobre Ruta Segura
-            </strong>
-
-            <span>
-                Herramienta orientada a facilitar la
-                comunicación y el aviso de situaciones
-                de seguridad.
-            </span>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     BARRA INFERIOR
-========================= -->
-
-<nav class="bottom-nav">
-
-
-    <button
-        id="nav-home"
-        class="nav-button active"
-        onclick="showPage('home')"
-    >
-        <span>🏠</span>
-        Inicio
-    </button>
-
-
-    <button
-        id="nav-location"
-        class="nav-button"
-        onclick="showPage('location')"
-    >
-        <span>📍</span>
-        Ubicación
-    </button>
-
-
-    <button
-        id="nav-messages"
-        class="nav-button"
-        onclick="showPage('messages')"
-    >
-        <span>💬</span>
-        Mensajes
-    </button>
-
-
-    <button
-        id="nav-alerts"
-        class="nav-button"
-        onclick="showPage('alerts')"
-    >
-        <span>🚨</span>
-        Alertas
-    </button>
-
-
-    <button
-        id="nav-settings"
-        class="nav-button"
-        onclick="showPage('settings')"
-    >
-        <span>⚙️</span>
-        Ajustes
-    </button>
-
-
-</nav>
-
-</div>
-
-
-<!-- =========================
-     MODAL ALERTA
-========================= -->
-
-<div
-    id="alertModal"
-    class="modal-background"
->
-
-    <div class="modal">
-
-        <h3 id="modalTitle">
-            🚨 Confirmar alerta
-        </h3>
-
-        <p id="modalText">
-            Se preparará un mensaje para tu contacto
-            de confianza junto con tu ubicación.
-        </p>
-
-
-        <div class="modal-buttons">
-
-            <button
-                class="danger"
-                onclick="sendAlertWhatsApp()"
-            >
-                🚨 Confirmar alerta
-            </button>
-
-
-            <button
-                class="cancel"
-                onclick="closeModal()"
-            >
-                Cancelar
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<script>
-
-/* =========================
-   VARIABLES
-========================= */
-
-let currentPage = "home";
-
-let currentAlert = "";
-
-let latitude = null;
-let longitude = null;
-
-
-/* =========================
-   ENTRAR
-========================= */
-
-function enterApp(){
-
-    const name =
-        document
-        .getElementById("userName")
-        .value
-        .trim();
-
-    if(!name){
-
-        alert("Escribí tu nombre para continuar.");
-
-        return;
-    }
-
-    localStorage.setItem(
-        "rutaSeguraUserName",
-        name
-    );
-
-    document
-        .getElementById("loginScreen")
-        .classList.add("hidden");
-
-    document
-        .getElementById("app")
-        .classList.remove("hidden");
-
-    document
-        .getElementById("welcome")
-        .textContent =
-        "Hola " + name + " 👋";
-
-    document
-        .getElementById("settingUserName")
-        .textContent =
-        name;
-
-    loadContact();
-
-    getLocation();
-
-}
-
-
-/* =========================
-   CAMBIAR PÁGINA
-========================= */
-
-function showPage(page){
-
-    const pages = [
-        "home",
-        "location",
-        "messages",
-        "alerts",
-        "settings"
-    ];
-
-
-    pages.forEach(function(item){
-
-        document
-            .getElementById(item)
-            .classList.add("hidden");
-
-        document
-            .getElementById("nav-" + item)
-            .classList.remove("active");
-
-    });
-
-
-    document
-        .getElementById(page)
-        .classList.remove("hidden");
-
-
-    document
-        .getElementById("nav-" + page)
-        .classList.add("active");
-
-
-    currentPage = page;
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-/* =========================
-   CONTACTO
-========================= */
-
-function toggleContactForm(){
-
-    document
-        .getElementById("contactForm")
-        .classList.toggle("hidden");
-
-}
-
-
-function saveContact(){
-
-    const name =
-        document
-        .getElementById("contactName")
-        .value
-        .trim();
-
-    const phone =
-        document
-        .getElementById("contactPhone")
-        .value
-        .trim();
-
-
-    if(!name || !phone){
-
-        alert(
-            "Completá el nombre y el número."
-        );
-
-        return;
-    }
-
-
-    localStorage.setItem(
-        "rutaSeguraContactName",
-        name
-    );
-
-    localStorage.setItem(
-        "rutaSeguraContactPhone",
-        phone
-    );
-
-
-    loadContact();
-
-
-    document
-        .getElementById("contactForm")
-        .classList.add("hidden");
-
-
-    alert(
-        "Contacto de confianza guardado correctamente."
-    );
-
-}
-
-
-function loadContact(){
-
-    const name =
-        localStorage.getItem(
-            "rutaSeguraContactName"
-        );
-
-    const phone =
-        localStorage.getItem(
-            "rutaSeguraContactPhone"
-        );
-
-
-    if(name){
-
-        document
-            .getElementById("contactNameDisplay")
-            .textContent = name;
-
-        document
-            .getElementById("settingContact")
-            .textContent = name +
-            " · " +
-            (phone || "");
-
-    }
-
-    if(phone){
-
-        document
-            .getElementById("contactPhoneDisplay")
-            .textContent =
-            phone;
-
-    }
-
-}
-
-
-/* =========================
-   GPS
-========================= */
-
-function getLocation(){
-
-    const status =
-        document
-        .getElementById("gpsStatus");
-
-
-    if(!navigator.geolocation){
-
-        status.textContent =
-            "No disponible";
-
-        return;
-    }
-
-
-    status.textContent =
-        "Obteniendo...";
-
-
-    navigator.geolocation.getCurrentPosition(
-
-        function(position){
-
-            latitude =
-                position.coords.latitude;
-
-            longitude =
-                position.coords.longitude;
-
-
-            document
-                .getElementById("latitude")
-                .textContent =
-                latitude.toFixed(6);
-
-
-            document
-                .getElementById("longitude")
-                .textContent =
-                longitude.toFixed(6);
-
-
-            status.textContent =
-                "GPS activo";
-
-        },
-
-
-        function(){
-
-            status.textContent =
-                "Permiso pendiente";
-
-            alert(
-                "Permití que Chrome acceda a tu ubicación."
-            );
-
-        },
-
-
-        {
-            enableHighAccuracy:true,
-            timeout:10000,
-            maximumAge:0
-        }
-
-    );
-
-}
-
-
-/* =========================
-   DESTINO
-========================= */
-
-function openDestination(){
-
-    const destination =
-        document
-        .getElementById("destination")
-        .value
-        .trim();
-
-
-    if(!destination){
-
-        alert(
-            "Escribí primero tu destino."
-        );
-
-        return;
-    }
-
-
-    const url =
-        "https://www.google.com/maps/search/?api=1&query=" +
-        encodeURIComponent(destination);
-
-
-    window.open(
-        url,
-        "_blank"
-    );
-
-}
-
-
-/* =========================
-   MENSAJES NORMALES
-========================= */
-
-function sendNormalMessage(type){
-
-    const phone =
-        localStorage.getItem(
-            "rutaSeguraContactPhone"
-        );
-
-
-    if(!phone){
-
-        alert(
-            "Primero configurá un contacto de confianza en Inicio."
-        );
-
-        showPage("home");
-
-        return;
-    }
-
-
-    let message = "";
-
-
-    if(type === "Estoy bien"){
-
-        message =
-            "✅ Estoy bien.";
-
-    }
-
-
-    if(type === "Estoy seguro/a"){
-
-        message =
-            "🛡️ Estoy seguro/a.";
-
-    }
-
-
-    if(type === "Tomé otro camino"){
-
-        message =
-            "🔄 Tomé otro camino.";
-
-    }
-
-
-    if(type === "Voy a tardar más"){
-
-        message =
-            "⏰ Voy a tardar más.";
-
-    }
-
-
-    if(type === "Llegué"){
-
-        message =
-            "🏠 Llegué bien.";
-
-    }
-
-
-    if(
-        latitude !== null &&
-        longitude !== null
-    ){
-
-        message +=
-            "\n\n📍 Mi ubicación:\n" +
-            "https://www.google.com/maps?q=" +
-            latitude +
-            "," +
-            longitude;
-
-    }
-
-
-    openWhatsApp(
-        phone,
-        message
-    );
-
-}
-
-
-/* =========================
-   ALERTAS
-========================= */
-
-function openAlert(type){
-
-    currentAlert = type;
-
-
-    getLocation();
-
-
-    document
-        .getElementById("modalTitle")
-        .textContent =
-        "🚨 " + type;
-
-
-    document
-        .getElementById("modalText")
-        .textContent =
-        "Se preparará un mensaje para tu contacto de confianza indicando que: " +
-        type +
-        ". También se agregará tu ubicación actual.";
-
-
-    document
-        .getElementById("alertModal")
-        .style.display =
-        "flex";
-
-}
-
-
-function closeModal(){
-
-    document
-        .getElementById("alertModal")
-        .style.display =
-        "none";
-
-}
-
-
-function sendAlertWhatsApp(){
-
-    const phone =
-        localStorage.getItem(
-            "rutaSeguraContactPhone"
-        );
-
-
-    if(!phone){
-
-        closeModal();
-
-        alert(
-            "Primero configurá un contacto de confianza."
-        );
-
-        showPage("home");
-
-        toggleContactForm();
-
-        return;
-    }
-
-
-    let message =
-        "🚨 ALERTA - RUTA SEGURA\n\n";
-
-
-    message +=
-        "Situación: " +
-        currentAlert +
-        "\n\n";
-
-
-    message +=
-        "Necesito ayuda.";
-
-
-    if(
-        latitude !== null &&
-        longitude !== null
-    ){
-
-        message +=
-            "\n\n📍 Mi ubicación:\n" +
-            "https://www.google.com/maps?q=" +
-            latitude +
-            "," +
-            longitude;
-
-    }
-
-
-    closeModal();
-
-
-    openWhatsApp(
-        phone,
-        message
-    );
-
-}
-
-
-/* =========================
-   WHATSAPP
-========================= */
-
-function openWhatsApp(phone,message){
-
-    let cleanPhone =
-        phone.replace(/\D/g,"");
-
-
-    if(cleanPhone.startsWith("0")){
-
-        cleanPhone =
-            cleanPhone.substring(1);
-
-    }
-
-
-    const url =
-        "https://wa.me/" +
-        cleanPhone +
-        "?text=" +
-        encodeURIComponent(message);
-
-
-    window.open(
-        url,
-        "_blank"
-    );
-
-}
-
-
-/* =========================
-   AJUSTES
-========================= */
-
-function changeName(){
-
-    const newName =
-        prompt(
-            "Escribí tu nuevo nombre:"
-        );
-
-
-    if(!newName){
-        return;
-    }
-
-
-    localStorage.setItem(
-        "rutaSeguraUserName",
-        newName
-    );
-
-
-    document
-        .getElementById("welcome")
-        .textContent =
-        "Hola " + newName + " 👋";
-
-
-    document
-        .getElementById("settingUserName")
-        .textContent =
-        newName;
-
-}
-
-
-function goToContact(){
-
-    showPage("home");
-
-    setTimeout(function(){
-
-        const form =
-            document
-            .getElementById("contactForm");
-
-
-        if(
-            form.classList.contains("hidden")
-        ){
-
-            form.classList.remove("hidden");
-
-        }
-
-    },100);
-
-}
-
-</script>
 
 </body>
 </html>
