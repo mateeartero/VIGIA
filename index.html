@@ -14,16 +14,20 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background:
-                radial-gradient(circle at 15% 20%, rgba(30, 220, 190, 0.10), transparent 28%),
-                radial-gradient(circle at 85% 80%, rgba(0, 150, 255, 0.10), transparent 30%),
+                radial-gradient(circle at 15% 20%, rgba(30,220,190,.10), transparent 28%),
+                radial-gradient(circle at 85% 80%, rgba(0,150,255,.10), transparent 30%),
                 #050912;
             color: #f4f8fb;
             min-height: 100vh;
         }
 
-        /* ---------------- NAVBAR ---------------- */
+        /* NAVBAR */
 
         nav {
             width: 100%;
@@ -32,8 +36,8 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 7%;
-            background: rgba(5, 9, 18, 0.80);
-            border-bottom: 1px solid rgba(100, 255, 225, 0.08);
+            background: rgba(5,9,18,.88);
+            border-bottom: 1px solid rgba(100,255,225,.08);
             backdrop-filter: blur(14px);
             position: sticky;
             top: 0;
@@ -44,6 +48,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            cursor: pointer;
         }
 
         .brand img {
@@ -55,7 +60,6 @@
         .brand-name {
             font-size: 23px;
             font-weight: 700;
-            letter-spacing: 0.5px;
         }
 
         .brand-name span {
@@ -70,11 +74,11 @@
         .nav-btn {
             background: transparent;
             color: #dce8ed;
-            border: 1px solid rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,.10);
             padding: 10px 17px;
             border-radius: 10px;
             cursor: pointer;
-            transition: 0.25s;
+            transition: .25s;
         }
 
         .nav-btn:hover {
@@ -82,7 +86,7 @@
             color: #36e0c0;
         }
 
-        /* ---------------- HERO ---------------- */
+        /* HERO */
 
         .hero {
             min-height: calc(100vh - 75px);
@@ -101,8 +105,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            border: 1px solid rgba(54, 224, 192, 0.25);
-            background: rgba(54, 224, 192, 0.07);
+            border: 1px solid rgba(54,224,192,.25);
+            background: rgba(54,224,192,.07);
             color: #58e8cf;
             padding: 8px 14px;
             border-radius: 30px;
@@ -119,14 +123,14 @@
         }
 
         h1 {
-            font-size: clamp(45px, 6vw, 76px);
-            line-height: 0.98;
+            font-size: clamp(45px,6vw,76px);
+            line-height: .98;
             margin-bottom: 25px;
             letter-spacing: -3px;
         }
 
         h1 span {
-            background: linear-gradient(90deg, #43e3c4, #2da9ff);
+            background: linear-gradient(90deg,#43e3c4,#2da9ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -145,33 +149,35 @@
             flex-wrap: wrap;
         }
 
+        button {
+            font-family: inherit;
+        }
+
         .primary-btn {
             border: none;
             padding: 15px 25px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #35dfc0, #198dff);
+            background: linear-gradient(135deg,#35dfc0,#198dff);
             color: #031018;
             font-weight: 700;
             font-size: 15px;
             cursor: pointer;
-            transition: 0.25s;
-            box-shadow: 0 10px 35px rgba(39, 210, 190, 0.18);
+            transition: .25s;
         }
 
         .primary-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(39, 210, 190, 0.28);
         }
 
         .secondary-btn {
-            border: 1px solid rgba(255,255,255,0.13);
-            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,.13);
+            background: rgba(255,255,255,.03);
             color: white;
             padding: 15px 25px;
             border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.25s;
+            transition: .25s;
         }
 
         .secondary-btn:hover {
@@ -179,7 +185,7 @@
             color: #36e0c0;
         }
 
-        /* ---------------- LOGO DISPLAY ---------------- */
+        /* LOGO */
 
         .hero-logo {
             width: 410px;
@@ -191,16 +197,18 @@
             position: relative;
 
             background:
-                radial-gradient(circle at center,
-                    rgba(54,224,192,0.13),
-                    rgba(15,24,37,0.35) 45%,
-                    rgba(5,9,18,0.75) 75%);
+                radial-gradient(
+                    circle at center,
+                    rgba(54,224,192,.13),
+                    rgba(15,24,37,.35) 45%,
+                    rgba(5,9,18,.75) 75%
+                );
 
-            border: 1px solid rgba(73, 234, 210, 0.13);
+            border: 1px solid rgba(73,234,210,.13);
 
             box-shadow:
-                0 0 80px rgba(28, 214, 190, 0.08),
-                inset 0 0 60px rgba(30, 120, 180, 0.05);
+                0 0 80px rgba(28,214,190,.08),
+                inset 0 0 60px rgba(30,120,180,.05);
         }
 
         .hero-logo::before {
@@ -209,7 +217,7 @@
             width: 270px;
             height: 270px;
             border-radius: 50%;
-            border: 1px solid rgba(54,224,192,0.12);
+            border: 1px solid rgba(54,224,192,.12);
         }
 
         .hero-logo img {
@@ -218,15 +226,15 @@
             object-fit: contain;
             position: relative;
             z-index: 2;
-            filter: drop-shadow(0 0 25px rgba(50,220,200,0.16));
+            filter: drop-shadow(0 0 25px rgba(50,220,200,.16));
         }
 
-        /* ---------------- FEATURES ---------------- */
+        /* FEATURES */
 
         .features-section {
-            padding: 90px 9%;
-            background: rgba(255,255,255,0.015);
-            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 100px 9%;
+            background: rgba(255,255,255,.015);
+            border-top: 1px solid rgba(255,255,255,.05);
         }
 
         .section-title {
@@ -245,7 +253,7 @@
 
         .features {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3,1fr);
             gap: 20px;
             max-width: 1100px;
             margin: auto;
@@ -254,15 +262,14 @@
         .feature {
             padding: 30px;
             border-radius: 20px;
-            background: rgba(255,255,255,0.025);
-            border: 1px solid rgba(255,255,255,0.07);
-            transition: 0.3s;
+            background: rgba(255,255,255,.025);
+            border: 1px solid rgba(255,255,255,.07);
+            transition: .3s;
         }
 
         .feature:hover {
             transform: translateY(-5px);
-            border-color: rgba(54,224,192,0.25);
-            background: rgba(54,224,192,0.035);
+            border-color: rgba(54,224,192,.25);
         }
 
         .icon {
@@ -273,8 +280,8 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            background: rgba(54,224,192,0.08);
-            border: 1px solid rgba(54,224,192,0.15);
+            background: rgba(54,224,192,.08);
+            border: 1px solid rgba(54,224,192,.15);
         }
 
         .icon svg {
@@ -296,7 +303,7 @@
             font-size: 14px;
         }
 
-        /* ---------------- ALERT SECTION ---------------- */
+        /* ALERT SECTION */
 
         .alert-section {
             padding: 100px 9%;
@@ -308,11 +315,15 @@
             padding: 45px;
             border-radius: 28px;
             background:
-                radial-gradient(circle at top right,
-                rgba(39,150,255,0.08),
-                transparent 40%),
-                rgba(255,255,255,0.025);
-            border: 1px solid rgba(255,255,255,0.08);
+                radial-gradient(
+                    circle at top right,
+                    rgba(39,150,255,.08),
+                    transparent 40%
+                ),
+                rgba(255,255,255,.025);
+
+            border: 1px solid rgba(255,255,255,.08);
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -338,8 +349,7 @@
             padding: 25px;
             border-radius: 20px;
             background: #090f19;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,.08);
         }
 
         .alert-status {
@@ -361,27 +371,65 @@
 
         .alert-option {
             width: 100%;
-            border: 1px solid rgba(255,255,255,0.07);
-            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,.07);
+            background: rgba(255,255,255,.025);
             color: white;
             padding: 13px;
             margin-top: 9px;
             border-radius: 10px;
             text-align: left;
             cursor: pointer;
-            transition: 0.2s;
+            transition: .2s;
         }
 
         .alert-option:hover {
             border-color: #36e0c0;
-            background: rgba(54,224,192,0.06);
+            background: rgba(54,224,192,.06);
         }
 
-        /* ---------------- FOOTER ---------------- */
+        .alert-option:active {
+            transform: scale(.98);
+        }
+
+        /* CONTACTO */
+
+        .contact-section {
+            padding: 100px 9%;
+            background: rgba(255,255,255,.015);
+            border-top: 1px solid rgba(255,255,255,.05);
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-box h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #8998a2;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .contact-info {
+            display: inline-block;
+            padding: 14px 22px;
+            border: 1px solid rgba(54,224,192,.18);
+            background: rgba(54,224,192,.05);
+            border-radius: 12px;
+            color: #58e8cf;
+        }
+
+        /* FOOTER */
 
         footer {
             padding: 35px 9%;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255,255,255,.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -393,9 +441,74 @@
             color: #36e0c0;
         }
 
-        /* ---------------- RESPONSIVE ---------------- */
+        /* MENSAJE */
 
-        @media (max-width: 850px) {
+        .message-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.75);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .message-modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 430px;
+            background: #09101b;
+            border: 1px solid rgba(54,224,192,.2);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 30px 100px rgba(0,0,0,.5);
+        }
+
+        .modal-box h3 {
+            margin-bottom: 15px;
+            font-size: 23px;
+        }
+
+        .modal-box p {
+            color: #84939e;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            resize: none;
+            background: #050a12;
+            color: white;
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 12px;
+            padding: 14px;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        textarea:focus {
+            border-color: #36e0c0;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:850px) {
 
             nav {
                 padding: 0 5%;
@@ -450,7 +563,7 @@
             }
         }
 
-        @media (max-width: 500px) {
+        @media(max-width:500px) {
 
             h1 {
                 font-size: 48px;
@@ -479,236 +592,440 @@
 
 <body>
 
-    <!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 
-    <nav>
+<nav>
 
-        <div class="brand">
+    <div class="brand" onclick="irA('inicio')">
 
-            <img src="logo-vigia.png" alt="Logo Vigía">
+        <img src="logo-vigia.png" alt="Logo Vigía">
 
-            <div class="brand-name">
-                VI<span>GÍA</span>
+        <div class="brand-name">
+            VI<span>GÍA</span>
+        </div>
+
+    </div>
+
+    <div class="nav-buttons">
+
+        <button class="nav-btn" onclick="irA('inicio')">
+            Inicio
+        </button>
+
+        <button class="nav-btn" onclick="irA('funciones')">
+            Cómo funciona
+        </button>
+
+        <button class="nav-btn" onclick="irA('contacto')">
+            Contacto
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-text">
+
+        <div class="tag">
+            <span class="tag-dot"></span>
+            Seguridad inteligente
+        </div>
+
+        <h1>
+            Siempre cerca.
+            <br>
+            <span>Cuando importa.</span>
+        </h1>
+
+        <p class="hero-description">
+            Vigía es una plataforma de seguridad que permite
+            comunicar rápidamente una situación de riesgo
+            y compartir tu ubicación con personas de confianza.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                onclick="irA('alertas')">
+                Comenzar ahora
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="irA('funciones')">
+                Conocer Vigía
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-logo">
+
+        <img src="logo-vigia.png" alt="Vigía">
+
+    </div>
+
+</section>
+
+
+<!-- ================= FUNCIONES ================= -->
+
+<section class="features-section" id="funciones">
+
+    <div class="section-title">
+
+        <h2>Tu seguridad, más simple.</h2>
+
+        <p>
+            Herramientas pensadas para actuar rápidamente.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="icon">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                    <path d="M10 21h4"></path>
+                </svg>
+
             </div>
 
-        </div>
-
-        <div class="nav-buttons">
-            <button class="nav-btn">Inicio</button>
-            <button class="nav-btn">Cómo funciona</button>
-            <button class="nav-btn">Contacto</button>
-        </div>
-
-    </nav>
-
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="hero-text">
-
-            <div class="tag">
-                <span class="tag-dot"></span>
-                Seguridad inteligente
-            </div>
-
-            <h1>
-                Siempre cerca.
-                <br>
-                <span>Cuando importa.</span>
-            </h1>
-
-            <p class="hero-description">
-                Vigía es una plataforma de seguridad que permite
-                comunicar rápidamente una situación de riesgo
-                y compartir tu ubicación con personas de confianza.
-            </p>
-
-            <div class="hero-buttons">
-
-                <button class="primary-btn">
-                    Comenzar ahora
-                </button>
-
-                <button class="secondary-btn">
-                    Conocer Vigía
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="hero-logo">
-
-            <img src="logo-vigia.png" alt="Vigía">
-
-        </div>
-
-    </section>
-
-
-    <!-- FEATURES -->
-
-    <section class="features-section">
-
-        <div class="section-title">
-
-            <h2>Tu seguridad, más simple.</h2>
+            <h3>Alertas rápidas</h3>
 
             <p>
-                Herramientas pensadas para actuar rápidamente.
+                Elegí rápidamente el tipo de situación
+                y enviá una alerta a tu contacto de confianza.
             </p>
 
         </div>
 
 
-        <div class="features">
+        <div class="feature">
 
+            <div class="icon">
 
-            <!-- ALERTA -->
-
-            <div class="feature">
-
-                <div class="icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
-                        <path d="M10 21h4"></path>
-                    </svg>
-
-                </div>
-
-                <h3>Alertas rápidas</h3>
-
-                <p>
-                    Elegí rápidamente el tipo de situación
-                    y enviá una alerta a tu contacto de confianza.
-                </p>
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"></path>
+                    <circle cx="12" cy="9" r="2.5"></circle>
+                </svg>
 
             </div>
 
+            <h3>Ubicación</h3>
 
-            <!-- UBICACION -->
-
-            <div class="feature">
-
-                <div class="icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"></path>
-                        <circle cx="12" cy="9" r="2.5"></circle>
-                    </svg>
-
-                </div>
-
-                <h3>Ubicación</h3>
-
-                <p>
-                    Compartí tu ubicación para que tu contacto
-                    pueda saber dónde te encontrás.
-                </p>
-
-            </div>
-
-
-            <!-- CONTACTO -->
-
-            <div class="feature">
-
-                <div class="icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="8" r="4"></circle>
-                        <path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"></path>
-                    </svg>
-
-                </div>
-
-                <h3>Contacto de confianza</h3>
-
-                <p>
-                    Configurá previamente a las personas
-                    que recibirán tus alertas.
-                </p>
-
-            </div>
+            <p>
+                Compartí tu ubicación para que tu contacto
+                pueda saber dónde te encontrás.
+            </p>
 
         </div>
 
-    </section>
+
+        <div class="feature">
+
+            <div class="icon">
+
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"></path>
+                </svg>
+
+            </div>
+
+            <h3>Contacto de confianza</h3>
+
+            <p>
+                Configurá previamente a las personas
+                que recibirán tus alertas.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- ALERT DEMO -->
+<!-- ================= ALERTAS ================= -->
 
-    <section class="alert-section">
+<section class="alert-section" id="alertas">
 
-        <div class="alert-container">
+    <div class="alert-container">
 
-            <div class="alert-text">
+        <div class="alert-text">
 
-                <h2>
-                    Una acción puede comunicarlo todo.
-                </h2>
+            <h2>
+                Una acción puede comunicarlo todo.
+            </h2>
 
-                <p>
-                    Ante una situación de riesgo, Vigía busca
-                    reducir los pasos necesarios para pedir ayuda
-                    y comunicar tu ubicación.
-                </p>
+            <p>
+                Ante una situación de riesgo, seleccioná
+                una opción y Vigía preparará el aviso para
+                tu contacto de confianza.
+            </p>
+
+        </div>
+
+
+        <div class="alert-card">
+
+            <div class="alert-status">
+
+                <span class="status-dot"></span>
+
+                Vigía listo
 
             </div>
 
 
-            <div class="alert-card">
+            <button
+                class="alert-option"
+                onclick="enviarAlerta('Necesito ayuda')">
 
-                <div class="alert-status">
+                Necesito ayuda
 
-                    <span class="status-dot"></span>
-
-                    Vigía listo
-
-                </div>
+            </button>
 
 
-                <button class="alert-option">
-                    Necesito ayuda
-                </button>
+            <button
+                class="alert-option"
+                onclick="enviarAlerta('No me siento seguro/a')">
 
-                <button class="alert-option">
-                    No me siento seguro/a
-                </button>
+                No me siento seguro/a
 
-                <button class="alert-option">
-                    Situación de riesgo
-                </button>
+            </button>
 
-                <button class="alert-option">
-                    Enviar mensaje personalizado
-                </button>
 
-            </div>
+            <button
+                class="alert-option"
+                onclick="enviarAlerta('Situación de riesgo')">
+
+                Situación de riesgo
+
+            </button>
+
+
+            <button
+                class="alert-option"
+                onclick="abrirMensaje()">
+
+                Enviar mensaje personalizado
+
+            </button>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- FOOTER -->
+<!-- ================= CONTACTO ================= -->
 
-    <footer>
+<section class="contact-section" id="contacto">
 
-        <div>
-            © 2026 <strong>Vigía</strong>
+    <div class="contact-box">
+
+        <h2>¿Querés conocer más?</h2>
+
+        <p>
+            Vigía es un proyecto pensado para utilizar
+            la tecnología como herramienta de comunicación,
+            prevención y acompañamiento.
+        </p>
+
+        <div class="contact-info">
+            Proyecto Vigía · Pergamino
         </div>
 
-        <div>
-            Seguridad. Tecnología. Confianza.
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div>
+        © 2026 <strong>Vigía</strong>
+    </div>
+
+    <div>
+        Seguridad · Tecnología · Confianza
+    </div>
+
+</footer>
+
+
+<!-- ================= MODAL ================= -->
+
+<div class="message-modal" id="messageModal">
+
+    <div class="modal-box">
+
+        <h3>Mensaje personalizado</h3>
+
+        <p>
+            Escribí el mensaje que querés enviar
+            a tu contacto de confianza.
+        </p>
+
+        <textarea
+            id="mensaje"
+            placeholder="Escribí tu mensaje...">
+        </textarea>
+
+        <div class="modal-buttons">
+
+            <button
+                class="secondary-btn"
+                onclick="cerrarMensaje()">
+                Cancelar
+            </button>
+
+            <button
+                class="primary-btn"
+                onclick="enviarMensaje()">
+                Enviar alerta
+            </button>
+
         </div>
 
-    </footer>
+    </div>
 
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    /* IR A UNA SECCIÓN */
+
+    function irA(id) {
+
+        const elemento = document.getElementById(id);
+
+        if (elemento) {
+
+            elemento.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+    }
+
+
+    /* ALERTAS */
+
+    function enviarAlerta(tipo) {
+
+        alert(
+            "ALERTA PREPARADA\n\n" +
+            "Tipo: " + tipo +
+            "\n\n" +
+            "Ubicación: se obtendría desde el dispositivo." +
+            "\n\n" +
+            "Contacto de confianza: configurado."
+        );
+
+    }
+
+
+    /* ABRIR MENSAJE */
+
+    function abrirMensaje() {
+
+        document
+            .getElementById("messageModal")
+            .classList.add("active");
+
+        document
+            .getElementById("mensaje")
+            .focus();
+
+    }
+
+
+    /* CERRAR MENSAJE */
+
+    function cerrarMensaje() {
+
+        document
+            .getElementById("messageModal")
+            .classList.remove("active");
+
+    }
+
+
+    /* ENVIAR MENSAJE */
+
+    function enviarMensaje() {
+
+        const mensaje =
+            document.getElementById("mensaje").value.trim();
+
+
+        if (mensaje === "") {
+
+            alert("Escribí un mensaje antes de enviarlo.");
+
+            return;
+
+        }
+
+
+        alert(
+            "ALERTA PREPARADA\n\n" +
+            "Mensaje:\n" +
+            mensaje +
+            "\n\n" +
+            "Ubicación: se obtendría desde el dispositivo." +
+            "\n\n" +
+            "Contacto de confianza: configurado."
+        );
+
+
+        document.getElementById("mensaje").value = "";
+
+        cerrarMensaje();
+
+    }
+
+
+    /* CERRAR MODAL AL TOCAR AFUERA */
+
+    document
+        .getElementById("messageModal")
+        .addEventListener("click", function(event) {
+
+            if (event.target === this) {
+
+                cerrarMensaje();
+
+            }
+
+        });
+
+</script>
 
 </body>
 </html>
