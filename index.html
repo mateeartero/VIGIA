@@ -2582,3 +2582,433 @@ document
 
 </body>
 </html>
+
+<!-- =====================================================
+     ENCUESTA DE SATISFACCIÓN
+===================================================== -->
+
+<section class="screen" id="encuesta">
+
+    <div class="content">
+
+        <div class="title">
+
+            <small>Tu opinión</small>
+
+            <h1>
+                ¿Qué te pareció Vigía?
+            </h1>
+
+            <p>
+                Tu opinión nos ayuda a mejorar la experiencia.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                ¿Qué calificación le das a Vigía?
+            </h2>
+
+            <div class="rating">
+
+                <button onclick="selectRating(1)">★</button>
+                <button onclick="selectRating(2)">★</button>
+                <button onclick="selectRating(3)">★</button>
+                <button onclick="selectRating(4)">★</button>
+                <button onclick="selectRating(5)">★</button>
+
+            </div>
+
+            <p id="ratingText">
+                Seleccioná una calificación.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                ¿Te resultó fácil de usar?
+            </h2>
+
+            <div class="survey-options">
+
+                <button onclick="selectOption(this, 'Muy fácil')">
+                    Muy fácil
+                </button>
+
+                <button onclick="selectOption(this, 'Fácil')">
+                    Fácil
+                </button>
+
+                <button onclick="selectOption(this, 'Normal')">
+                    Normal
+                </button>
+
+                <button onclick="selectOption(this, 'Difícil')">
+                    Difícil
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                ¿Qué función te pareció más útil?
+            </h2>
+
+            <div class="survey-options">
+
+                <button onclick="selectOption(this, 'Alertas')">
+                    Alertas
+                </button>
+
+                <button onclick="selectOption(this, 'Ubicación')">
+                    Ubicación
+                </button>
+
+                <button onclick="selectOption(this, 'Contacto de confianza')">
+                    Contacto de confianza
+                </button>
+
+                <button onclick="selectOption(this, 'Avisos')">
+                    Avisos
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                ¿Usarías Vigía?
+            </h2>
+
+            <div class="survey-options">
+
+                <button onclick="selectOption(this, 'Sí')">
+                    Sí
+                </button>
+
+                <button onclick="selectOption(this, 'Tal vez')">
+                    Tal vez
+                </button>
+
+                <button onclick="selectOption(this, 'No')">
+                    No
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                ¿Qué mejorarías?
+            </h2>
+
+            <textarea
+                id="surveyComment"
+                placeholder="Escribí tu opinión...">
+            </textarea>
+
+            <button
+                class="btn btn-primary btn-full"
+                onclick="submitSurvey()">
+
+                Enviar opinión
+
+            </button>
+
+            <div
+                id="surveyResult"
+                style="margin-top:18px;text-align:center;">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<style>
+
+/* =====================================================
+   ENCUESTA
+===================================================== */
+
+.rating{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:25px 0 15px;
+}
+
+.rating button{
+    border:none;
+    background:transparent;
+    color:#39434d;
+    font-size:42px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.rating button:hover{
+    transform:scale(1.15);
+    color:#36e0c0;
+}
+
+.rating button.selected{
+    color:#36e0c0;
+}
+
+#ratingText{
+    text-align:center;
+    margin-bottom:0;
+}
+
+.survey-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.survey-options button{
+    padding:14px;
+    border-radius:11px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.025);
+    color:white;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.survey-options button:hover{
+    border-color:#36e0c0;
+    color:#36e0c0;
+}
+
+.survey-options button.selected{
+    background:rgba(54,224,192,.10);
+    border-color:#36e0c0;
+    color:#58e8cf;
+}
+
+@media(max-width:750px){
+
+    .survey-options{
+        grid-template-columns:1fr;
+    }
+
+    .rating button{
+        font-size:36px;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+/* =====================================================
+   ENCUESTA
+===================================================== */
+
+let surveyRating = 0;
+
+let surveyAnswers = {
+    facilidad:"",
+    funcion:"",
+    uso:""
+};
+
+
+/* =====================================================
+   CALIFICACION
+===================================================== */
+
+function selectRating(number){
+
+    surveyRating = number;
+
+    const stars =
+        document.querySelectorAll(".rating button");
+
+    stars.forEach(function(star,index){
+
+        if(index < number){
+
+            star.classList.add("selected");
+
+        }else{
+
+            star.classList.remove("selected");
+
+        }
+
+    });
+
+
+    const text =
+        document.getElementById("ratingText");
+
+
+    const messages = {
+
+        1:"Muy mala",
+        2:"Mala",
+        3:"Regular",
+        4:"Muy buena",
+        5:"¡Excelente!"
+
+    };
+
+
+    text.textContent =
+        messages[number];
+
+}
+
+
+/* =====================================================
+   OPCIONES
+===================================================== */
+
+function selectOption(button,value){
+
+    const container =
+        button.parentElement;
+
+
+    container
+        .querySelectorAll("button")
+        .forEach(function(btn){
+
+            btn.classList.remove("selected");
+
+        });
+
+
+    button.classList.add("selected");
+
+
+    const question =
+        button.closest(".card")
+        .querySelector("h2")
+        .textContent;
+
+
+    if(question.includes("fácil")){
+
+        surveyAnswers.facilidad = value;
+
+    }
+
+    if(question.includes("función")){
+
+        surveyAnswers.funcion = value;
+
+    }
+
+    if(question.includes("Usarías")){
+
+        surveyAnswers.uso = value;
+
+    }
+
+}
+
+
+/* =====================================================
+   ENVIAR ENCUESTA
+===================================================== */
+
+function submitSurvey(){
+
+    const result =
+        document.getElementById("surveyResult");
+
+
+    if(surveyRating === 0){
+
+        result.innerHTML =
+            '<span style="color:#ff6872;">' +
+            'Primero seleccioná una calificación.' +
+            '</span>';
+
+        return;
+
+    }
+
+
+    const response = {
+
+        calificacion:surveyRating,
+
+        facilidad:surveyAnswers.facilidad,
+
+        funcion:surveyAnswers.funcion,
+
+        uso:surveyAnswers.uso,
+
+        comentario:
+            document
+            .getElementById("surveyComment")
+            .value
+            .trim()
+
+    };
+
+
+    /*
+       Guardamos la respuesta en el navegador.
+       Esto sirve para el prototipo.
+    */
+
+    let surveys =
+        JSON.parse(
+            localStorage.getItem("vigia_surveys") || "[]"
+        );
+
+
+    surveys.push(response);
+
+
+    localStorage.setItem(
+        "vigia_surveys",
+        JSON.stringify(surveys)
+    );
+
+
+    result.innerHTML =
+        '<span style="color:#58e8cf;font-weight:bold;">' +
+        '¡Gracias por tu opinión!' +
+        '</span>' +
+        '<br><br>' +
+        '<span style="color:#82919b;">' +
+        'Tu respuesta fue registrada correctamente.' +
+        '</span>';
+
+}
+
+</script>
+<button
+    class="btn btn-primary"
+    onclick="goTo('encuesta')">
+
+    Dejar mi opinión
+
+</button>
